@@ -33,8 +33,8 @@ def regression_metrics(y_true, y_pred):
     }
 
 
-def evaluate_baselines(train_df, test_df, input_vars, target_col):
-    """Linear Regression ve Decision Tree baseline modellerini egitir ve test metriklerini dondurur."""
+def predict_with_baselines(train_df, test_df, input_vars, target_col):
+    """Linear Regression ve Decision Tree icin tahminleri ve metrikleri uretir."""
     X_train = train_df[input_vars]
     y_train = train_df[target_col].to_numpy(dtype=float)
     X_test = test_df[input_vars]
@@ -46,14 +46,29 @@ def evaluate_baselines(train_df, test_df, input_vars, target_col):
     ]
 
     results = []
+    predictions = {}
+
     for model_name, model in models:
         model.fit(X_train, y_train)
-        preds = model.predict(X_test)
+        train_preds = model.predict(X_train)
+        test_preds = model.predict(X_test)
+
         row = {"Model": model_name}
-        row.update(regression_metrics(y_test, preds))
+        row.update(regression_metrics(y_test, test_preds))
         results.append(row)
 
-    return pd.DataFrame(results)
+        predictions[model_name] = {
+            "train": train_preds,
+            "test": test_preds,
+        }
+
+    return pd.DataFrame(results), predictions
+
+
+def evaluate_baselines(train_df, test_df, input_vars, target_col):
+    """Linear Regression ve Decision Tree baseline modellerini egitir ve test metriklerini dondurur."""
+    results_df, _ = predict_with_baselines(train_df, test_df, input_vars, target_col)
+    return results_df
 
 
 def evaluate_models(dataset_name, data_path, input_vars):
