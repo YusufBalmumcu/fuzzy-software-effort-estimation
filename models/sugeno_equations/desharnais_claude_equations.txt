@@ -1,0 +1,90 @@
+Dataset: desharnais
+LLM: claude
+Kural sayisi: 20
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 80
+
+Not: Her kural kendi R_i_OUT cikti terimine ve kendi birinci derece denklemine sahiptir.
+Albrecht veri setinde satir sayisi az oldugu icin 80 parametre asiri ogrenmeye yatkindir.
+Desharnais daha fazla ornek icerdigi icin bu tasarim acisindan daha guvenlidir.
+
+R1 | Orijinal etiket: Very_Low | R1_OUT
+IF (PointsAjust IS Low) AND (TeamExp IS High) AND (Length IS Low)
+f1(x) = -10990.909102*PointsAjust + -13395.006372*TeamExp + -10931.295227*Length + 14207.374293
+
+R2 | Orijinal etiket: Very_Low | R2_OUT
+IF (PointsAjust IS Low) AND (TeamExp IS High) AND (Length IS Medium)
+f2(x) = 113486.240775*PointsAjust + 114072.233551*TeamExp + -148969.773784*Length + -67321.112650
+
+R3 | Orijinal etiket: Low | R3_OUT
+IF (PointsAjust IS Low) AND (TeamExp IS Medium) AND (Length IS Low)
+f3(x) = -10938.241065*PointsAjust + 6158.057587*TeamExp + -16532.601456*Length + 1130.016096
+
+R4 | Orijinal etiket: Low | R4_OUT
+IF (PointsAjust IS Low) AND (TeamExp IS Medium) AND (Length IS Medium)
+f4(x) = 10359.567581*PointsAjust + -18507.542729*TeamExp + -85912.191773*Length + 38024.878522
+
+R5 | Orijinal etiket: Low | R5_OUT
+IF (PointsAjust IS Low) AND (TeamExp IS Low) AND (Length IS Low)
+f5(x) = 481.748823*PointsAjust + 88.438397*TeamExp + 66.998787*Length + 442.192000
+
+R6 | Orijinal etiket: Medium | R6_OUT
+IF (PointsAjust IS Low) AND (TeamExp IS Low) AND (Length IS High)
+f6(x) = -19994.883878*PointsAjust + -13898.083220*TeamExp + -44221.173880*Length + -69490.416104
+
+R7 | Orijinal etiket: Low | R7_OUT
+IF (PointsAjust IS Medium) AND (TeamExp IS High) AND (Length IS Low)
+f7(x) = -99395.472456*PointsAjust + 51858.818893*TeamExp + 13648.317065*Length + -6927.272935
+
+R8 | Orijinal etiket: Low | R8_OUT
+IF (PointsAjust IS Medium) AND (TeamExp IS High) AND (Length IS Medium)
+f8(x) = 8249.717118*PointsAjust + -15049.330665*TeamExp + 34060.320351*Length + 1524.519688
+
+R9 | Orijinal etiket: Medium | R9_OUT
+IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS Low)
+f9(x) = 14865.608322*PointsAjust + -17353.908846*TeamExp + -3533.613178*Length + 8344.193489
+
+R10 | Orijinal etiket: Medium | R10_OUT
+IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS Medium)
+f10(x) = -119345.420079*PointsAjust + 90190.876760*TeamExp + -13543.288173*Length + 5317.321474
+
+R11 | Orijinal etiket: High | R11_OUT
+IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS High)
+f11(x) = -4110.573374*PointsAjust + -2786.122524*TeamExp + -9302.025429*Length + -14624.553118
+
+R12 | Orijinal etiket: High | R12_OUT
+IF (PointsAjust IS Medium) AND (TeamExp IS Low) AND (Length IS Medium)
+f12(x) = -95339.002616*PointsAjust + -120749.772240*TeamExp + 102737.691871*Length + 28884.347079
+
+R13 | Orijinal etiket: High | R13_OUT
+IF (PointsAjust IS Medium) AND (TeamExp IS Low) AND (Length IS High)
+f13(x) = -23598.000228*PointsAjust + -16402.544420*TeamExp + -52189.914068*Length + -82012.722101
+
+R14 | Orijinal etiket: Medium | R14_OUT
+IF (PointsAjust IS High) AND (TeamExp IS High) AND (Length IS Low)
+f14(x) = 0.000000*PointsAjust + 0.000000*TeamExp + 0.000000*Length + 0.000000
+
+R15 | Orijinal etiket: Medium | R15_OUT
+IF (PointsAjust IS High) AND (TeamExp IS High) AND (Length IS Medium)
+f15(x) = -1279.100386*PointsAjust + 97938.744150*TeamExp + 158596.743868*Length + -197099.690763
+
+R16 | Orijinal etiket: High | R16_OUT
+IF (PointsAjust IS High) AND (TeamExp IS High) AND (Length IS High)
+f16(x) = -22071.822336*PointsAjust + 28132.212777*TeamExp + -44572.477474*Length + 28132.212777
+
+R17 | Orijinal etiket: High | R17_OUT
+IF (PointsAjust IS High) AND (TeamExp IS Medium) AND (Length IS Medium)
+f17(x) = 102133.282002*PointsAjust + -74052.991170*TeamExp + -29955.163746*Length + 225539.872850
+
+R18 | Orijinal etiket: Very_High | R18_OUT
+IF (PointsAjust IS High) AND (TeamExp IS Medium) AND (Length IS High)
+f18(x) = 388.069733*PointsAjust + 392.795469*TeamExp + 301.083997*Length + 582.154524
+
+R19 | Orijinal etiket: Very_High | R19_OUT
+IF (PointsAjust IS High) AND (TeamExp IS Low) AND (Length IS Medium)
+f19(x) = 0.000000*PointsAjust + 0.000000*TeamExp + 0.000000*Length + 0.000000
+
+R20 | Orijinal etiket: Very_High | R20_OUT
+IF (PointsAjust IS High) AND (TeamExp IS Low) AND (Length IS High)
+f20(x) = 0.000000*PointsAjust + 0.000000*TeamExp + 0.000000*Length + 0.000000
+

@@ -1,0 +1,90 @@
+Dataset: albrecht
+LLM: claude
+Kural sayisi: 20
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 80
+
+Not: Her kural kendi R_i_OUT cikti terimine ve kendi birinci derece denklemine sahiptir.
+Albrecht veri setinde satir sayisi az oldugu icin 80 parametre asiri ogrenmeye yatkindir.
+Desharnais daha fazla ornek icerdigi icin bu tasarim acisindan daha guvenlidir.
+
+R1 | Orijinal etiket: Very_Low | R1_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Low)
+f1(x) = 4.294790*RawFPcounts + -10.800335*Input + 13.492330*File + 1.298278
+
+R2 | Orijinal etiket: Very_Low | R2_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Medium)
+f2(x) = -3.189726*RawFPcounts + -0.243262*Input + -3.849971*File + 8.047455
+
+R3 | Orijinal etiket: Low | R3_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Low)
+f3(x) = -84.922474*RawFPcounts + 23.772944*Input + 0.711658*File + 7.023536
+
+R4 | Orijinal etiket: Low | R4_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Medium)
+f4(x) = -1.320309*RawFPcounts + 0.324967*Input + -0.174416*File + 0.049847
+
+R5 | Orijinal etiket: Medium | R5_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS Low)
+f5(x) = 0.000000*RawFPcounts + 0.000000*Input + 0.000000*File + 0.000000
+
+R6 | Orijinal etiket: Medium | R6_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS High)
+f6(x) = 0.000000*RawFPcounts + 0.000000*Input + 0.000000*File + 0.000000
+
+R7 | Orijinal etiket: Low | R7_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Low)
+f7(x) = 12.115063*RawFPcounts + 12.222981*Input + -5.691491*File + 26.783321
+
+R8 | Orijinal etiket: Medium | R8_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Medium)
+f8(x) = 5.555410*RawFPcounts + 6.124999*Input + 16.825874*File + 0.621956
+
+R9 | Orijinal etiket: Medium | R9_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Low)
+f9(x) = 21.987048*RawFPcounts + -27.128106*Input + -36.908952*File + 23.259745
+
+R10 | Orijinal etiket: Medium | R10_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Medium)
+f10(x) = 35.112998*RawFPcounts + 5.897926*Input + 36.820416*File + -46.504009
+
+R11 | Orijinal etiket: High | R11_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS High)
+f11(x) = -0.017675*RawFPcounts + -0.001833*Input + -0.050641*File + -0.089450
+
+R12 | Orijinal etiket: High | R12_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS Medium)
+f12(x) = -1.352769*RawFPcounts + -0.950163*Input + -0.639954*File + -1.575270
+
+R13 | Orijinal etiket: High | R13_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS High)
+f13(x) = 0.000000*RawFPcounts + 0.000000*Input + 0.000000*File + 0.000000
+
+R14 | Orijinal etiket: Medium | R14_OUT
+IF (RawFPcounts IS High) AND (Input IS Low) AND (File IS Low)
+f14(x) = 0.000000*RawFPcounts + 0.000000*Input + 0.000000*File + 0.000000
+
+R15 | Orijinal etiket: High | R15_OUT
+IF (RawFPcounts IS High) AND (Input IS Low) AND (File IS Medium)
+f15(x) = 0.000000*RawFPcounts + 0.000000*Input + 0.000000*File + 0.000000
+
+R16 | Orijinal etiket: High | R16_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS Low)
+f16(x) = 0.000000*RawFPcounts + 0.000000*Input + 0.000000*File + 0.000000
+
+R17 | Orijinal etiket: High | R17_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS Medium)
+f17(x) = -3.754437*RawFPcounts + -95.936752*Input + -23.421485*File + 85.007995
+
+R18 | Orijinal etiket: Very_High | R18_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS High)
+f18(x) = 3.631862*RawFPcounts + 2.075350*Input + 3.631862*File + 3.631862
+
+R19 | Orijinal etiket: Very_High | R19_OUT
+IF (RawFPcounts IS High) AND (Input IS High) AND (File IS Medium)
+f19(x) = -15.281739*RawFPcounts + -10.733645*Input + -7.229322*File + -17.795253
+
+R20 | Orijinal etiket: Very_High | R20_OUT
+IF (RawFPcounts IS High) AND (Input IS High) AND (File IS High)
+f20(x) = 0.000000*RawFPcounts + 0.000000*Input + 0.000000*File + 0.000000
+
