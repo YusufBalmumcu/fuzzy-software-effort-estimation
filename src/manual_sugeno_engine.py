@@ -28,10 +28,15 @@ def _triangle_membership(x, a, b, c):
     return 0.0
 
 
-def membership_degree(term, value):
+def membership_degree(term, value, variable_name=None):
     """
     fuzzy_design.py icindeki normalize [0, 1] uyelik fonksiyonlariyla ayni sekli kullanir.
     Low: trapezoid, Medium: Gaussian, High: triangular.
+
+    Uniform fuzzification uses fixed symmetric boundaries. It is simple and
+    interpretable, but it can ignore the actual distribution of each feature.
+    Quantile runners inject a different membership function without changing
+    this default behavior.
     """
     x = float(np.clip(value, 0.0, 1.0))
     normalized_term = term.lower()
@@ -56,10 +61,11 @@ class ManualSugenoEngine:
     Son tahmin, normalize kural agirliklari ile kural denklemlerinin agirlikli toplamidir.
     """
 
-    def __init__(self, rules, input_vars, coefficients=None, epsilon=1e-12):
+    def __init__(self, rules, input_vars, coefficients=None, epsilon=1e-12, membership_function=None):
         self.rules = rules
         self.input_vars = input_vars
         self.epsilon = epsilon
+        self.membership_function = membership_function or membership_degree
         self.coefficients = None
         if coefficients is not None:
             self.set_coefficients(coefficients)
@@ -81,7 +87,11 @@ class ManualSugenoEngine:
         for rule in self.rules:
             degree = 1.0
             for condition in rule["conditions"]:
-                degree *= membership_degree(condition["term"], row[condition["variable"]])
+                degree *= self.membership_function(
+                    condition["term"],
+                    row[condition["variable"]],
+                    condition["variable"],
+                )
             strengths.append(degree)
         return np.asarray(strengths, dtype=float)
 
@@ -90,8 +100,8 @@ class ManualSugenoEngine:
         total = strengths.sum()
 
         if total <= self.epsilon:
-            # Teorik olarak normalize [0, 1] araliginda MF'ler kapsama saglar.
-            # Yine de sifir atesleme olursa tahmini sayisal olarak tanimli tutuyoruz.
+            # No-rule-fire durumunda sessiz sifir dondurmek yerine butun kurallara
+            # esit agirlik veriyoruz; bu tahmini sayisal olarak tanimli tutar.
             normalized = np.ones(len(self.rules), dtype=float) / len(self.rules)
         else:
             normalized = strengths / total

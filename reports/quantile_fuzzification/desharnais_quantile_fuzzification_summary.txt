@@ -1,0 +1,30 @@
+Dataset: desharnais
+Fuzzification: Quantile-based / quartile-based
+
+Why quantile-based fuzzification was used
+Uniform fuzzification uses fixed symmetric boundaries. It is simple and interpretable, but it may ignore the actual distribution of each input feature. Quantile fuzzification uses Q1, Q2, and Q3 from the normalized feature values, so Low, Medium, and High adapt to each dataset and can improve rule activation balance.
+
+How Q1, Q2, Q3 were calculated
+For each selected normalized input feature, Q1 is the 25th percentile, Q2 is the median, and Q3 is the 75th percentile, computed with pandas quantile on the processed dataset.
+
+Membership definitions
+Triangular: Low=[0,0,Q2], Medium=[Q1,Q2,Q3], High=[Q2,1,1]
+Trapezoidal: Low=[0,0,Q1,Q2], Medium around Q2, High=[Q2,Q3,1,1]
+Gaussian: centers use Q1/Q2/Q3 and sigma is derived from neighboring spread.
+
+Statistics CSV: reports/quantile_fuzzification/statistics\desharnais_quantile_stats.csv
+MF parameters JSON: models/quantile_fuzzy_params\desharnais_quantile_mf_params.json
+Membership tables:
+- triangular: data/processed_data/quantile_memberships\desharnais_triangular_quantile_memberships.csv
+- trapezoidal: data/processed_data/quantile_memberships\desharnais_trapezoidal_quantile_memberships.csv
+- gaussian: data/processed_data/quantile_memberships\desharnais_gaussian_quantile_memberships.csv
+Plots:
+- reports/figures/quantile_fuzzification\desharnais_PointsAjust_triangular_quantile.png
+- reports/figures/quantile_fuzzification\desharnais_TeamExp_triangular_quantile.png
+- reports/figures/quantile_fuzzification\desharnais_Length_triangular_quantile.png
+- reports/figures/quantile_fuzzification\desharnais_PointsAjust_trapezoidal_quantile.png
+- reports/figures/quantile_fuzzification\desharnais_TeamExp_trapezoidal_quantile.png
+- reports/figures/quantile_fuzzification\desharnais_Length_trapezoidal_quantile.png
+- reports/figures/quantile_fuzzification\desharnais_PointsAjust_gaussian_quantile.png
+- reports/figures/quantile_fuzzification\desharnais_TeamExp_gaussian_quantile.png
+- reports/figures/quantile_fuzzification\desharnais_Length_gaussian_quantile.png

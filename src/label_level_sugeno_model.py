@@ -30,12 +30,23 @@ class LabelLevelSugenoModel:
     asiri ogrenme riski daha yuksektir.
     """
 
-    def __init__(self, dataset_name, llm_name="gemini", regularization=1e-2):
+    def __init__(
+        self,
+        dataset_name,
+        llm_name="gemini",
+        regularization=1e-2,
+        membership_function=None,
+        fuzzification_name="uniform",
+        mf_type="mixed",
+    ):
         self.dataset_name = dataset_name.lower()
         self.llm_name = llm_name.lower()
         self.rule_file_llm_name = LLM_NAME_ALIASES.get(self.llm_name, self.llm_name)
         self.output_llm_name = "gpt" if self.rule_file_llm_name == "chatgpt" else self.rule_file_llm_name
         self.regularization = regularization
+        self.membership_function = membership_function or membership_degree
+        self.fuzzification_name = fuzzification_name
+        self.mf_type = mf_type
 
         if self.dataset_name not in DATASET_CONFIG:
             raise ValueError(f"Bilinmeyen veri seti: {dataset_name}")
@@ -121,7 +132,11 @@ class LabelLevelSugenoModel:
         for rule in self.rules:
             degree = 1.0
             for condition in rule["conditions"]:
-                degree *= membership_degree(condition["term"], row[condition["variable"]])
+                degree *= self.membership_function(
+                    condition["term"],
+                    row[condition["variable"]],
+                    condition["variable"],
+                )
             strengths.append(degree)
         return np.asarray(strengths, dtype=float)
 
@@ -129,6 +144,7 @@ class LabelLevelSugenoModel:
         strengths = self.firing_strengths_for_row(row)
         total = strengths.sum()
         if total <= 1e-12:
+            # No-rule-fire durumunda sessiz sifir yerine esit kural agirligi kullanilir.
             normalized = np.ones(len(self.rules), dtype=float) / len(self.rules)
         else:
             normalized = strengths / total
@@ -231,6 +247,8 @@ class LabelLevelSugenoModel:
             "output_label_count": len(self.output_labels),
             "parameter_count": self.total_params,
             "regularization": self.regularization,
+            "fuzzification": self.fuzzification_name,
+            "membership_function_type": self.mf_type,
             "output_labels": self.equation_records(),
         }
 
@@ -245,6 +263,7 @@ class LabelLevelSugenoModel:
             f.write(f"Cikti etiketi sayisi: {len(self.output_labels)}\n")
             f.write(f"Girdi sayisi: {len(self.input_vars)}\n")
             f.write(f"Toplam ogrenilen parametre: {self.total_params}\n\n")
+            f.write(f"Fuzzification: {self.fuzzification_name} ({self.mf_type})\n\n")
             f.write("V1: Her cikti etiketi icin bir denklem ogrenir; daha az parametre ve daha kararlı davranis.\n")
             f.write("V2: Her kural icin bir denklem ogrenir; daha esnek fakat asiri ogrenme riski daha yuksek.\n\n")
             for label, record in payload["output_labels"].items():

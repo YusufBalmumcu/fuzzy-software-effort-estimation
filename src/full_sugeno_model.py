@@ -44,12 +44,23 @@ class FullRuleSugenoModel:
     20 kural ve 3 girdi varsa toplam 20 * (3 + 1) = 80 parametre vardir.
     """
 
-    def __init__(self, dataset_name, llm_name="gemini", regularization=1e-6):
+    def __init__(
+        self,
+        dataset_name,
+        llm_name="gemini",
+        regularization=1e-6,
+        membership_function=None,
+        fuzzification_name="uniform",
+        mf_type="mixed",
+    ):
         self.dataset_name = dataset_name.lower()
         self.llm_name = llm_name.lower()
         self.rule_file_llm_name = LLM_NAME_ALIASES.get(self.llm_name, self.llm_name)
         self.output_llm_name = "gpt" if self.rule_file_llm_name == "chatgpt" else self.rule_file_llm_name
         self.regularization = regularization
+        self.membership_function = membership_function
+        self.fuzzification_name = fuzzification_name
+        self.mf_type = mf_type
 
         if self.dataset_name not in DATASET_CONFIG:
             raise ValueError(f"Bilinmeyen veri seti: {dataset_name}")
@@ -63,7 +74,11 @@ class FullRuleSugenoModel:
             raise ValueError(f"{self.dataset_name}/{self.rule_file_llm_name} icin kural bulunamadi.")
 
         self.rules = convert_rules_to_rule_level(raw_rules, self.input_vars)
-        self.engine = ManualSugenoEngine(self.rules, self.input_vars)
+        self.engine = ManualSugenoEngine(
+            self.rules,
+            self.input_vars,
+            membership_function=self.membership_function,
+        )
         self.coefficients = None
         self.training_metrics = None
 
@@ -179,6 +194,8 @@ class FullRuleSugenoModel:
             "number_of_inputs": len(self.input_vars),
             "total_learned_parameters": self.total_params,
             "regularization": self.regularization,
+            "fuzzification": self.fuzzification_name,
+            "membership_function_type": self.mf_type,
             "rules": self.equation_records(),
         }
 
@@ -191,6 +208,7 @@ class FullRuleSugenoModel:
             f.write(f"Kural sayisi: {len(self.rules)}\n")
             f.write(f"Girdi sayisi: {len(self.input_vars)}\n")
             f.write(f"Toplam ogrenilen parametre: {self.total_params}\n\n")
+            f.write(f"Fuzzification: {self.fuzzification_name} ({self.mf_type})\n\n")
             f.write("Not: Her kural kendi R_i_OUT cikti terimine ve kendi birinci derece denklemine sahiptir.\n")
             f.write("Albrecht veri setinde satir sayisi az oldugu icin 80 parametre asiri ogrenmeye yatkindir.\n")
             f.write("Desharnais daha fazla ornek icerdigi icin bu tasarim acisindan daha guvenlidir.\n\n")
