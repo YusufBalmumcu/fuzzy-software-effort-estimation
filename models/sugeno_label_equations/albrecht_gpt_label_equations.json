@@ -1,0 +1,62 @@
+{
+  "dataset": "albrecht",
+  "llm": "gpt",
+  "rule_source_llm": "chatgpt",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "RawFPcounts",
+    "Input",
+    "File"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 2.662601*RawFPcounts + -6.569887*Input + 8.364714*File + 1.796309",
+      "coefficients": {
+        "RawFPcounts": 2.662600610609173,
+        "Input": -6.569887265016378,
+        "File": 8.364714219363218,
+        "bias": 1.7963087919205414
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 53.905640*RawFPcounts + -15.540085*Input + -3.865453*File + 4.527886",
+      "coefficients": {
+        "RawFPcounts": 53.905639638580055,
+        "Input": -15.54008495959163,
+        "File": -3.8654534886979186,
+        "bias": 4.527886433117336
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 12.807551*RawFPcounts + 2.066630*Input + -16.423936*File + 8.441476",
+      "coefficients": {
+        "RawFPcounts": 12.80755066062699,
+        "Input": 2.066629559292325,
+        "File": -16.423935555978673,
+        "bias": 8.441475631378019
+      }
+    },
+    "High": {
+      "equation": "High(x) = 4.316926*RawFPcounts + -8.610894*Input + -7.229853*File + 19.955512",
+      "coefficients": {
+        "RawFPcounts": 4.316925565278359,
+        "Input": -8.610894419141944,
+        "File": -7.229853467799503,
+        "bias": 19.955512390400752
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = 0.000000*RawFPcounts + 0.000000*Input + 0.000000*File + 0.000000",
+      "coefficients": {
+        "RawFPcounts": 0.0,
+        "Input": 0.0,
+        "File": 0.0,
+        "bias": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "dataset": "desharnais",
+  "llm": "gpt",
+  "rule_source_llm": "chatgpt",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 11785.744420*PointsAjust + 591.156561*TeamExp + 5074.207242*Length + -166.442540",
+      "coefficients": {
+        "PointsAjust": 11785.74441995186,
+        "TeamExp": 591.1565610145254,
+        "Length": 5074.207241718003,
+        "bias": -166.44253992412
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 2538.824326*PointsAjust + 3642.969932*TeamExp + 76.727717*Length + -475.619086",
+      "coefficients": {
+        "PointsAjust": 2538.8243259784444,
+        "TeamExp": 3642.9699322782067,
+        "Length": 76.72771749168224,
+        "bias": -475.6190858460749
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 3751.335279*PointsAjust + -1315.029339*TeamExp + 7839.992490*Length + 1869.545468",
+      "coefficients": {
+        "PointsAjust": 3751.33527913333,
+        "TeamExp": -1315.0293390561965,
+        "Length": 7839.992490264755,
+        "bias": 1869.5454684014846
+      }
+    },
+    "High": {
+      "equation": "High(x) = 6774.978562*PointsAjust + -2713.288278*TeamExp + -6814.799589*Length + 4003.542933",
+      "coefficients": {
+        "PointsAjust": 6774.978561953593,
+        "TeamExp": -2713.2882781118415,
+        "Length": -6814.799588739525,
+        "bias": 4003.5429328182317
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = 0.000000*PointsAjust + 0.000000*TeamExp + 0.000000*Length + 0.000000",
+      "coefficients": {
+        "PointsAjust": 0.0,
+        "TeamExp": 0.0,
+        "Length": 0.0,
+        "bias": 0.0
+      }
+    }
+  }
+}

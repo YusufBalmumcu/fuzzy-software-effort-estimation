@@ -1,0 +1,62 @@
+{
+  "dataset": "desharnais",
+  "llm": "claude",
+  "rule_source_llm": "claude",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 18607.786271*PointsAjust + -63.773974*TeamExp + 2580.724515*Length + 228.247699",
+      "coefficients": {
+        "PointsAjust": 18607.78627054494,
+        "TeamExp": -63.773973890172876,
+        "Length": 2580.724514842642,
+        "bias": 228.24769938053828
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = -307.524398*PointsAjust + 1511.834794*TeamExp + 12779.823756*Length + -1260.011637",
+      "coefficients": {
+        "PointsAjust": -307.52439844690645,
+        "TeamExp": 1511.8347940299561,
+        "Length": 12779.823756471387,
+        "bias": -1260.0116374363647
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 145.183538*PointsAjust + 2638.971028*TeamExp + 4422.068363*Length + 2680.470298",
+      "coefficients": {
+        "PointsAjust": 145.18353774725261,
+        "TeamExp": 2638.9710276303485,
+        "Length": 4422.068362673428,
+        "bias": 2680.4702977090483
+      }
+    },
+    "High": {
+      "equation": "High(x) = 5990.324422*PointsAjust + 4222.273724*TeamExp + -5639.105644*Length + 4304.022422",
+      "coefficients": {
+        "PointsAjust": 5990.3244218136715,
+        "TeamExp": 4222.273723798665,
+        "Length": -5639.105643810774,
+        "bias": 4304.02242204726
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = 685.676800*PointsAjust + 414.610647*TeamExp + 684.025694*Length + 689.070215",
+      "coefficients": {
+        "PointsAjust": 685.6767995488736,
+        "TeamExp": 414.61064741883746,
+        "Length": 684.0256940359058,
+        "bias": 689.0702149035877
+      }
+    }
+  }
+}

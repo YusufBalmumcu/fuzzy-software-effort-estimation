@@ -1,0 +1,62 @@
+{
+  "dataset": "desharnais",
+  "llm": "gemini",
+  "rule_source_llm": "gemini",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 12048.778410*PointsAjust + 422.662440*TeamExp + 5505.177321*Length + 49.231721",
+      "coefficients": {
+        "PointsAjust": 12048.778410124547,
+        "TeamExp": 422.6624400027614,
+        "Length": 5505.17732082478,
+        "bias": 49.23172135250314
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 5208.930988*PointsAjust + 1209.894760*TeamExp + 3672.824536*Length + 184.991128",
+      "coefficients": {
+        "PointsAjust": 5208.9309879367265,
+        "TeamExp": 1209.8947597540187,
+        "Length": 3672.82453620352,
+        "bias": 184.99112783567205
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 5821.915168*PointsAjust + -1394.841899*TeamExp + 10446.502262*Length + 119.300662",
+      "coefficients": {
+        "PointsAjust": 5821.915168182247,
+        "TeamExp": -1394.841899325032,
+        "Length": 10446.50226150299,
+        "bias": 119.30066159312683
+      }
+    },
+    "High": {
+      "equation": "High(x) = 11573.571413*PointsAjust + -1469.705175*TeamExp + -240.601312*Length + 486.179039",
+      "coefficients": {
+        "PointsAjust": 11573.571412786798,
+        "TeamExp": -1469.7051751529336,
+        "Length": -240.6013119251783,
+        "bias": 486.1790392992236
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = 947.692912*PointsAjust + -789.769252*TeamExp + 3149.642969*Length + -1363.432625",
+      "coefficients": {
+        "PointsAjust": 947.6929116729804,
+        "TeamExp": -789.7692517145615,
+        "Length": 3149.6429692767156,
+        "bias": -1363.432625063051
+      }
+    }
+  }
+}

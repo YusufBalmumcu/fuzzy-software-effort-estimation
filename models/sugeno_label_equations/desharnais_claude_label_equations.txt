@@ -1,0 +1,26 @@
+Dataset: desharnais
+LLM: claude
+Model: Sugeno V1 Label-Level First-Order
+Kural sayisi: 20
+Cikti etiketi sayisi: 5
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 20
+
+V1: Her cikti etiketi icin bir denklem ogrenir; daha az parametre ve daha kararlı davranis.
+V2: Her kural icin bir denklem ogrenir; daha esnek fakat asiri ogrenme riski daha yuksek.
+
+Very_Low
+Very_Low(x) = 18607.786271*PointsAjust + -63.773974*TeamExp + 2580.724515*Length + 228.247699
+
+Low
+Low(x) = -307.524398*PointsAjust + 1511.834794*TeamExp + 12779.823756*Length + -1260.011637
+
+Medium
+Medium(x) = 145.183538*PointsAjust + 2638.971028*TeamExp + 4422.068363*Length + 2680.470298
+
+High
+High(x) = 5990.324422*PointsAjust + 4222.273724*TeamExp + -5639.105644*Length + 4304.022422
+
+Very_High
+Very_High(x) = 685.676800*PointsAjust + 414.610647*TeamExp + 684.025694*Length + 689.070215
+
