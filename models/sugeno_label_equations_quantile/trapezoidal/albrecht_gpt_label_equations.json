@@ -1,0 +1,64 @@
+{
+  "dataset": "albrecht",
+  "llm": "gpt",
+  "rule_source_llm": "chatgpt",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "RawFPcounts",
+    "Input",
+    "File"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "fuzzification": "quantile",
+  "membership_function_type": "trapezoidal",
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 8.445663*RawFPcounts + 7.135165*Input + -0.065213*File + -0.317898",
+      "coefficients": {
+        "RawFPcounts": 8.445662767107613,
+        "Input": 7.135164570003636,
+        "File": -0.0652131930869325,
+        "bias": -0.3178977148319139
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 20.060869*RawFPcounts + -3.763672*Input + 6.578775*File + 4.364555",
+      "coefficients": {
+        "RawFPcounts": 20.06086873093077,
+        "Input": -3.7636715916153007,
+        "File": 6.5787750312957645,
+        "bias": 4.364554741486919
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 43.807503*RawFPcounts + -43.866438*Input + -20.640987*File + 12.589723",
+      "coefficients": {
+        "RawFPcounts": 43.80750307978136,
+        "Input": -43.86643820814835,
+        "File": -20.640987146777473,
+        "bias": 12.589723364433553
+      }
+    },
+    "High": {
+      "equation": "High(x) = 20.008159*RawFPcounts + 26.603272*Input + -17.708721*File + -5.039128",
+      "coefficients": {
+        "RawFPcounts": 20.00815853458817,
+        "Input": 26.603272400734298,
+        "File": -17.708720803506893,
+        "bias": -5.039128024992156
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = 2.796413*RawFPcounts + -7.312817*Input + -6.332028*File + 19.746630",
+      "coefficients": {
+        "RawFPcounts": 2.7964126812765016,
+        "Input": -7.312816573429615,
+        "File": -6.332027839894537,
+        "bias": 19.746629979702988
+      }
+    }
+  }
+}

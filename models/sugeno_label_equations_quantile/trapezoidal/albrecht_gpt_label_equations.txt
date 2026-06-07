@@ -1,0 +1,28 @@
+Dataset: albrecht
+LLM: gpt
+Model: Sugeno V1 Label-Level First-Order
+Kural sayisi: 20
+Cikti etiketi sayisi: 5
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 20
+
+Fuzzification: quantile (trapezoidal)
+
+V1: Her cikti etiketi icin bir denklem ogrenir; daha az parametre ve daha kararlı davranis.
+V2: Her kural icin bir denklem ogrenir; daha esnek fakat asiri ogrenme riski daha yuksek.
+
+Very_Low
+Very_Low(x) = 8.445663*RawFPcounts + 7.135165*Input + -0.065213*File + -0.317898
+
+Low
+Low(x) = 20.060869*RawFPcounts + -3.763672*Input + 6.578775*File + 4.364555
+
+Medium
+Medium(x) = 43.807503*RawFPcounts + -43.866438*Input + -20.640987*File + 12.589723
+
+High
+High(x) = 20.008159*RawFPcounts + 26.603272*Input + -17.708721*File + -5.039128
+
+Very_High
+Very_High(x) = 2.796413*RawFPcounts + -7.312817*Input + -6.332028*File + 19.746630
+

@@ -1,0 +1,64 @@
+{
+  "dataset": "desharnais",
+  "llm": "claude",
+  "rule_source_llm": "claude",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "fuzzification": "quantile",
+  "membership_function_type": "gaussian",
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 8228.260931*PointsAjust + -918.976888*TeamExp + 2863.239669*Length + 931.310608",
+      "coefficients": {
+        "PointsAjust": 8228.260931441564,
+        "TeamExp": -918.9768883851322,
+        "Length": 2863.2396685774997,
+        "bias": 931.3106078704077
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 8735.477456*PointsAjust + 18205.877780*TeamExp + 6154.077532*Length + -8664.160823",
+      "coefficients": {
+        "PointsAjust": 8735.47745553617,
+        "TeamExp": 18205.877780122122,
+        "Length": 6154.077532381507,
+        "bias": -8664.160823182909
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 4270.948567*PointsAjust + -4120.838927*TeamExp + -4028.408458*Length + -5108.846645",
+      "coefficients": {
+        "PointsAjust": 4270.948567097881,
+        "TeamExp": -4120.838927493875,
+        "Length": -4028.408457655524,
+        "bias": -5108.846645010239
+      }
+    },
+    "High": {
+      "equation": "High(x) = 2576.183699*PointsAjust + -1850.516955*TeamExp + 8770.042266*Length + 5210.671869",
+      "coefficients": {
+        "PointsAjust": 2576.1836986131534,
+        "TeamExp": -1850.5169553556173,
+        "Length": 8770.042266399254,
+        "bias": 5210.671869304692
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = -4018.716949*PointsAjust + 7186.382906*TeamExp + -9756.457556*Length + 7904.789299",
+      "coefficients": {
+        "PointsAjust": -4018.71694856929,
+        "TeamExp": 7186.382906178291,
+        "Length": -9756.457556179326,
+        "bias": 7904.789298828014
+      }
+    }
+  }
+}

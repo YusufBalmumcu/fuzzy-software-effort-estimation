@@ -1,0 +1,64 @@
+{
+  "dataset": "desharnais",
+  "llm": "gpt",
+  "rule_source_llm": "chatgpt",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "fuzzification": "quantile",
+  "membership_function_type": "trapezoidal",
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 9640.057490*PointsAjust + -2814.150599*TeamExp + 353.525778*Length + 3502.914410",
+      "coefficients": {
+        "PointsAjust": 9640.05748964209,
+        "TeamExp": -2814.1505985627387,
+        "Length": 353.52577766130725,
+        "bias": 3502.9144096827586
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 12500.187023*PointsAjust + 10846.701562*TeamExp + -2243.432177*Length + -7756.544917",
+      "coefficients": {
+        "PointsAjust": 12500.187023362912,
+        "TeamExp": 10846.701561781618,
+        "Length": -2243.432176587985,
+        "bias": -7756.544916643974
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 1658.107053*PointsAjust + 3221.754852*TeamExp + -3688.293721*Length + 1765.174381",
+      "coefficients": {
+        "PointsAjust": 1658.1070525604034,
+        "TeamExp": 3221.7548523050023,
+        "Length": -3688.2937209384227,
+        "bias": 1765.1743807400553
+      }
+    },
+    "High": {
+      "equation": "High(x) = 4281.349789*PointsAjust + 2992.280988*TeamExp + 2982.162351*Length + 992.980174",
+      "coefficients": {
+        "PointsAjust": 4281.349789268642,
+        "TeamExp": 2992.280988414854,
+        "Length": 2982.162351410299,
+        "bias": 992.9801742606
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = 5467.016705*PointsAjust + 13314.004851*TeamExp + -6201.101171*Length + 5327.303724",
+      "coefficients": {
+        "PointsAjust": 5467.016704546065,
+        "TeamExp": 13314.004851430269,
+        "Length": -6201.1011709964305,
+        "bias": 5327.303724241575
+      }
+    }
+  }
+}

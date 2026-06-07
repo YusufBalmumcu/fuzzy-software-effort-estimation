@@ -1,0 +1,64 @@
+{
+  "dataset": "albrecht",
+  "llm": "gemini",
+  "rule_source_llm": "gemini",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "RawFPcounts",
+    "Input",
+    "File"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "fuzzification": "quantile",
+  "membership_function_type": "gaussian",
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 7.414144*RawFPcounts + -1.936539*Input + 1.618220*File + -14.987593",
+      "coefficients": {
+        "RawFPcounts": 7.414144282056517,
+        "Input": -1.9365388193799524,
+        "File": 1.618220035459776,
+        "bias": -14.987592588105926
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 23.620959*RawFPcounts + -4.162368*Input + -7.105575*File + -1.844273",
+      "coefficients": {
+        "RawFPcounts": 23.620958818392005,
+        "Input": -4.162368483591905,
+        "File": -7.105574879979662,
+        "bias": -1.8442733204665522
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 27.335083*RawFPcounts + -22.497256*Input + -16.159055*File + 15.217626",
+      "coefficients": {
+        "RawFPcounts": 27.335083000183932,
+        "Input": -22.497256468056953,
+        "File": -16.159055497833815,
+        "bias": 15.217626334228262
+      }
+    },
+    "High": {
+      "equation": "High(x) = 39.958773*RawFPcounts + -34.370615*Input + -22.877930*File + 22.696497",
+      "coefficients": {
+        "RawFPcounts": 39.95877309646308,
+        "Input": -34.37061535790442,
+        "File": -22.877929651936796,
+        "bias": 22.69649702852924
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = 41.827036*RawFPcounts + -1.643453*Input + -11.785123*File + -17.526640",
+      "coefficients": {
+        "RawFPcounts": 41.82703558360489,
+        "Input": -1.6434527662391731,
+        "File": -11.785123016516627,
+        "bias": -17.52663986228599
+      }
+    }
+  }
+}

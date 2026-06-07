@@ -1,0 +1,28 @@
+Dataset: desharnais
+LLM: gpt
+Model: Sugeno V1 Label-Level First-Order
+Kural sayisi: 20
+Cikti etiketi sayisi: 5
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 20
+
+Fuzzification: quantile (trapezoidal)
+
+V1: Her cikti etiketi icin bir denklem ogrenir; daha az parametre ve daha kararlı davranis.
+V2: Her kural icin bir denklem ogrenir; daha esnek fakat asiri ogrenme riski daha yuksek.
+
+Very_Low
+Very_Low(x) = 9640.057490*PointsAjust + -2814.150599*TeamExp + 353.525778*Length + 3502.914410
+
+Low
+Low(x) = 12500.187023*PointsAjust + 10846.701562*TeamExp + -2243.432177*Length + -7756.544917
+
+Medium
+Medium(x) = 1658.107053*PointsAjust + 3221.754852*TeamExp + -3688.293721*Length + 1765.174381
+
+High
+High(x) = 4281.349789*PointsAjust + 2992.280988*TeamExp + 2982.162351*Length + 992.980174
+
+Very_High
+Very_High(x) = 5467.016705*PointsAjust + 13314.004851*TeamExp + -6201.101171*Length + 5327.303724
+

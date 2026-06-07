@@ -25,16 +25,22 @@ from src.label_level_sugeno_model import LabelLevelSugenoModel
 
 DATASETS = ["albrecht", "desharnais"]
 LLMS = ["gemini", "gpt", "claude"]
-RESULTS_DIR = "reports/results/quantile"
-PREDICTIONS_DIR = "reports/predictions/quantile"
-RULE_ANALYSIS_DIR = "reports/rule_analysis/quantile"
-FIGURES_DIR = "reports/figures/quantile"
-EQUATIONS_DIR = "models/sugeno_label_equations_quantile"
+RESULTS_ROOT = "reports/results/quantile"
+PREDICTIONS_ROOT = "reports/predictions/quantile"
+RULE_ANALYSIS_ROOT = "reports/rule_analysis/quantile"
+FIGURES_ROOT = "reports/figures/quantile"
+EQUATIONS_ROOT = "models/sugeno_label_equations_quantile"
+RESULTS_DIR = os.path.join(RESULTS_ROOT, "triangular")
+PREDICTIONS_DIR = os.path.join(PREDICTIONS_ROOT, "triangular")
+RULE_ANALYSIS_DIR = os.path.join(RULE_ANALYSIS_ROOT, "triangular")
+FIGURES_DIR = os.path.join(FIGURES_ROOT, "triangular")
+EQUATIONS_DIR = os.path.join(EQUATIONS_ROOT, "triangular")
 COMPARISON_COLUMNS = [
     "Dataset",
     "LLM",
     "Model",
     "Fuzzification",
+    "MF Type",
     "Rules",
     "Inputs",
     "Parameters",
@@ -48,6 +54,21 @@ COMPARISON_COLUMNS = [
     "CV MAPE (%)",
     "CV R2",
 ]
+
+
+def set_output_dirs(mf_type):
+    global RESULTS_DIR, PREDICTIONS_DIR, RULE_ANALYSIS_DIR, FIGURES_DIR, EQUATIONS_DIR
+    RESULTS_DIR = os.path.join(RESULTS_ROOT, mf_type)
+    PREDICTIONS_DIR = os.path.join(PREDICTIONS_ROOT, mf_type)
+    RULE_ANALYSIS_DIR = os.path.join(RULE_ANALYSIS_ROOT, mf_type)
+    FIGURES_DIR = os.path.join(FIGURES_ROOT, mf_type)
+    EQUATIONS_DIR = os.path.join(EQUATIONS_ROOT, mf_type)
+
+
+def resolve_mf_types(mf_type):
+    if mf_type == "all":
+        return list(MF_TYPES)
+    return [mf_type]
 
 
 def split_dataset(df):
@@ -367,7 +388,7 @@ def run_single(dataset_name, llm_name, mf_type):
             model.output_llm_name,
             base_row["Model"],
             base_row,
-            "None",
+            "Baseline",
             "",
             0,
             len(model.input_vars),
@@ -415,11 +436,13 @@ def run_single(dataset_name, llm_name, mf_type):
 
 
 def _comparison_label(row):
-    return f"{row['LLM']} {row['Model']} {row['Fuzzification']}"
+    mf_type = row.get("MF Type", "")
+    mf_suffix = f" {mf_type}" if isinstance(mf_type, str) and mf_type else ""
+    return f"{row['LLM']} {row['Model']} {row['Fuzzification']}{mf_suffix}"
 
 
 def save_uniform_vs_quantile_plots(comparison_df):
-    os.makedirs(FIGURES_DIR, exist_ok=True)
+    os.makedirs(FIGURES_ROOT, exist_ok=True)
     paths = []
     sugeno_df = comparison_df[comparison_df["Model"].str.contains("Sugeno", na=False)].copy()
     for dataset_name in DATASETS:
@@ -438,7 +461,7 @@ def save_uniform_vs_quantile_plots(comparison_df):
             plt.title(f"{dataset_name.capitalize()} Uniform vs Quantile - {metric_name}")
             plt.gca().invert_yaxis()
             plt.tight_layout()
-            path = os.path.join(FIGURES_DIR, f"{dataset_name}_uniform_vs_quantile_{file_part}.png")
+            path = os.path.join(FIGURES_ROOT, f"{dataset_name}_uniform_vs_quantile_{file_part}.png")
             plt.savefig(path, bbox_inches="tight")
             plt.close()
             paths.append(path)
@@ -446,18 +469,18 @@ def save_uniform_vs_quantile_plots(comparison_df):
 
 
 def save_uniform_vs_quantile_comparison(mf_type):
-    quantile_summary_path = os.path.join(RESULTS_DIR, "final_quantile_all_models_summary.csv")
+    quantile_summary_path = os.path.join(RESULTS_ROOT, "final_quantile_all_models_summary.csv")
     if not os.path.exists(quantile_summary_path):
         return None, []
 
     rows = []
     quantile_df = pd.read_csv(quantile_summary_path)
-    if "MF Type" in quantile_df.columns:
+    if mf_type != "all" and "MF Type" in quantile_df.columns:
         quantile_df = quantile_df[(quantile_df["MF Type"].fillna("") == mf_type) | (quantile_df["MF Type"].fillna("") == "")]
     for _, row in quantile_df.iterrows():
-        fuzzification = row.get("Fuzzification", "None")
+        fuzzification = row.get("Fuzzification", "Baseline")
         if pd.isna(fuzzification):
-            fuzzification = "None"
+            fuzzification = "Baseline"
         rows.append({
             col: row.get(col, np.nan)
             for col in COMPARISON_COLUMNS
@@ -474,6 +497,7 @@ def save_uniform_vs_quantile_comparison(mf_type):
                 "LLM": row.get("LLM", ""),
                 "Model": row.get("Model", ""),
                 "Fuzzification": "Uniform",
+                "MF Type": "uniform",
                 "Rules": row.get("Rules", np.nan),
                 "Inputs": row.get("Inputs", np.nan),
                 "Parameters": row.get("Parameters", np.nan),
@@ -504,19 +528,29 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Run quantile-based Sugeno V1 label-level models.")
     parser.add_argument("--datasets", nargs="+", default=DATASETS, choices=DATASETS)
     parser.add_argument("--llms", nargs="+", default=LLMS, choices=LLMS)
-    parser.add_argument("--mf-type", default="triangular", choices=MF_TYPES)
+    parser.add_argument("--mf-type", default="all", choices=[*MF_TYPES, "all"])
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     all_rows = []
-    for dataset_name in args.datasets:
-        for llm_name in args.llms:
-            all_rows.extend(run_single(dataset_name, llm_name, args.mf_type))
+    for mf_type in resolve_mf_types(args.mf_type):
+        set_output_dirs(mf_type)
+        mf_rows = []
+        for dataset_name in args.datasets:
+            for llm_name in args.llms:
+                rows = run_single(dataset_name, llm_name, mf_type)
+                mf_rows.extend(rows)
+                all_rows.extend(rows)
 
-    os.makedirs(RESULTS_DIR, exist_ok=True)
-    summary_path = os.path.join(RESULTS_DIR, "final_quantile_all_models_summary.csv")
+        os.makedirs(RESULTS_DIR, exist_ok=True)
+        mf_summary_path = os.path.join(RESULTS_DIR, "final_quantile_all_models_summary.csv")
+        pd.DataFrame(mf_rows).to_csv(mf_summary_path, index=False)
+        print(f"[OK] {mf_type} V1 summary saved to {mf_summary_path}")
+
+    os.makedirs(RESULTS_ROOT, exist_ok=True)
+    summary_path = os.path.join(RESULTS_ROOT, "final_quantile_all_models_summary.csv")
     pd.DataFrame(all_rows).to_csv(summary_path, index=False)
     comparison_path, figure_paths = save_uniform_vs_quantile_comparison(args.mf_type)
 

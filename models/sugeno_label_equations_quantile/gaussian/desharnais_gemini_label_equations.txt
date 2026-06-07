@@ -1,0 +1,28 @@
+Dataset: desharnais
+LLM: gemini
+Model: Sugeno V1 Label-Level First-Order
+Kural sayisi: 20
+Cikti etiketi sayisi: 5
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 20
+
+Fuzzification: quantile (gaussian)
+
+V1: Her cikti etiketi icin bir denklem ogrenir; daha az parametre ve daha kararlı davranis.
+V2: Her kural icin bir denklem ogrenir; daha esnek fakat asiri ogrenme riski daha yuksek.
+
+Very_Low
+Very_Low(x) = 3885.015674*PointsAjust + -1708.376644*TeamExp + -263.489917*Length + -3379.699692
+
+Low
+Low(x) = 14285.723141*PointsAjust + 6570.391108*TeamExp + 2570.600660*Length + 4666.807974
+
+Medium
+Medium(x) = 1711.191596*PointsAjust + 3275.480980*TeamExp + -2774.325450*Length + -3732.067815
+
+High
+High(x) = 7622.559122*PointsAjust + -4009.779115*TeamExp + 9651.282164*Length + -1137.506677
+
+Very_High
+Very_High(x) = -4781.302047*PointsAjust + 10627.021502*TeamExp + -7169.498263*Length + 8025.694355
+

@@ -1,0 +1,64 @@
+{
+  "dataset": "desharnais",
+  "llm": "claude",
+  "rule_source_llm": "claude",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "fuzzification": "quantile",
+  "membership_function_type": "trapezoidal",
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 8411.592514*PointsAjust + -2289.565624*TeamExp + 1675.466794*Length + 3088.506406",
+      "coefficients": {
+        "PointsAjust": 8411.592514289116,
+        "TeamExp": -2289.5656236212203,
+        "Length": 1675.4667938141613,
+        "bias": 3088.5064062791575
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 7800.867040*PointsAjust + 3293.022559*TeamExp + 9350.674274*Length + -1741.795946",
+      "coefficients": {
+        "PointsAjust": 7800.867039607415,
+        "TeamExp": 3293.022558940779,
+        "Length": 9350.674274227576,
+        "bias": -1741.7959462140248
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 12024.064008*PointsAjust + -6052.171373*TeamExp + 1327.408676*Length + 3614.414609",
+      "coefficients": {
+        "PointsAjust": 12024.064008130452,
+        "TeamExp": -6052.171373426669,
+        "Length": 1327.4086760655532,
+        "bias": 3614.4146088666603
+      }
+    },
+    "High": {
+      "equation": "High(x) = 2726.676690*PointsAjust + 1906.326973*TeamExp + 9741.802400*Length + -1574.754699",
+      "coefficients": {
+        "PointsAjust": 2726.6766899648924,
+        "TeamExp": 1906.3269728168173,
+        "Length": 9741.80239982852,
+        "bias": -1574.754698683485
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = -6962.263700*PointsAjust + -1151.578993*TeamExp + 1396.920829*Length + 8862.819108",
+      "coefficients": {
+        "PointsAjust": -6962.2637000556415,
+        "TeamExp": -1151.57899315624,
+        "Length": 1396.920829081449,
+        "bias": 8862.81910831883
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+Dataset: albrecht
+LLM: gpt
+Kural sayisi: 20
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 80
+
+Fuzzification: quantile (gaussian)
+
+Not: Her kural kendi R_i_OUT cikti terimine ve kendi birinci derece denklemine sahiptir.
+Albrecht veri setinde satir sayisi az oldugu icin 80 parametre asiri ogrenmeye yatkindir.
+Desharnais daha fazla ornek icerdigi icin bu tasarim acisindan daha guvenlidir.
+
+R1 | Orijinal etiket: Very_Low | R1_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Low)
+f1(x) = -71.349857*RawFPcounts + -26.354410*Input + 9.835817*File + -59.182505
+
+R2 | Orijinal etiket: Low | R2_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Medium)
+f2(x) = -51.349364*RawFPcounts + -9.602790*Input + 3.810416*File + -0.297559
+
+R3 | Orijinal etiket: Medium | R3_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS High)
+f3(x) = -66.445009*RawFPcounts + -8.297540*Input + 10.997767*File + 0.047126
+
+R4 | Orijinal etiket: Low | R4_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Low)
+f4(x) = -225.777648*RawFPcounts + 24.609232*Input + 31.866022*File + -31.820857
+
+R5 | Orijinal etiket: Medium | R5_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Medium)
+f5(x) = -138.575563*RawFPcounts + 19.030689*Input + -15.746771*File + 3.014089
+
+R6 | Orijinal etiket: Medium | R6_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS High)
+f6(x) = -169.147392*RawFPcounts + 19.889554*Input + 33.696943*File + 3.411151
+
+R7 | Orijinal etiket: Medium | R7_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS Medium)
+f7(x) = -133.823887*RawFPcounts + 55.011459*Input + -7.214477*File + 79.032075
+
+R8 | Orijinal etiket: High | R8_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS High)
+f8(x) = -165.738996*RawFPcounts + 62.246382*Input + 28.176729*File + 88.743951
+
+R9 | Orijinal etiket: Low | R9_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Low)
+f9(x) = 161.530531*RawFPcounts + 51.205345*Input + 56.403591*File + 160.977719
+
+R10 | Orijinal etiket: Medium | R10_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Medium)
+f10(x) = 33.304280*RawFPcounts + 20.391096*Input + -53.449491*File + 0.481539
+
+R11 | Orijinal etiket: Medium | R11_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS High)
+f11(x) = 63.196405*RawFPcounts + 31.445166*Input + 26.033068*File + 30.475868
+
+R12 | Orijinal etiket: Medium | R12_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Low)
+f12(x) = 210.573927*RawFPcounts + -18.730381*Input + 92.147783*File + 72.628391
+
+R13 | Orijinal etiket: Medium | R13_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Medium)
+f13(x) = 69.154508*RawFPcounts + -34.143048*Input + -80.128863*File + -30.597017
+
+R14 | Orijinal etiket: High | R14_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS High)
+f14(x) = 73.242454*RawFPcounts + -56.401307*Input + 43.694196*File + -48.471530
+
+R15 | Orijinal etiket: High | R15_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS Medium)
+f15(x) = 37.496548*RawFPcounts + -35.122687*Input + -67.881074*File + -67.455808
+
+R16 | Orijinal etiket: High | R16_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS High)
+f16(x) = 35.604636*RawFPcounts + -53.592632*Input + 19.715598*File + -97.356579
+
+R17 | Orijinal etiket: Medium | R17_OUT
+IF (RawFPcounts IS High) AND (Input IS Low) AND (File IS Medium)
+f17(x) = 35.383554*RawFPcounts + 36.513617*Input + -52.475642*File + 42.985685
+
+R18 | Orijinal etiket: High | R18_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS Medium)
+f18(x) = 76.509416*RawFPcounts + 13.706928*Input + -77.273157*File + 81.938877
+
+R19 | Orijinal etiket: High | R19_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS High)
+f19(x) = 41.554844*RawFPcounts + -18.565050*Input + -17.638753*File + 47.408091
+
+R20 | Orijinal etiket: Very_High | R20_OUT
+IF (RawFPcounts IS High) AND (Input IS High) AND (File IS High)
+f20(x) = 28.780467*RawFPcounts + -3.305456*Input + -43.887862*File + 11.943068
+

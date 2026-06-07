@@ -1,0 +1,92 @@
+Dataset: albrecht
+LLM: gpt
+Kural sayisi: 20
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 80
+
+Fuzzification: quantile (trapezoidal)
+
+Not: Her kural kendi R_i_OUT cikti terimine ve kendi birinci derece denklemine sahiptir.
+Albrecht veri setinde satir sayisi az oldugu icin 80 parametre asiri ogrenmeye yatkindir.
+Desharnais daha fazla ornek icerdigi icin bu tasarim acisindan daha guvenlidir.
+
+R1 | Orijinal etiket: Very_Low | R1_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Low)
+f1(x) = 7.551430*RawFPcounts + 6.053664*Input + 0.245256*File + -0.268709
+
+R2 | Orijinal etiket: Low | R2_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Medium)
+f2(x) = 7.368571*RawFPcounts + 7.286379*Input + -0.329206*File + 5.762372
+
+R3 | Orijinal etiket: Medium | R3_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS High)
+f3(x) = 4.080559*RawFPcounts + 6.579488*Input + -5.659939*File + 7.139901
+
+R4 | Orijinal etiket: Low | R4_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Low)
+f4(x) = -87.977438*RawFPcounts + 26.161962*Input + 0.396332*File + 6.341306
+
+R5 | Orijinal etiket: Medium | R5_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Medium)
+f5(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483
+
+R6 | Orijinal etiket: Medium | R6_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS High)
+f6(x) = 7.903928*RawFPcounts + 7.389992*Input + 1.035038*File + 13.478129
+
+R7 | Orijinal etiket: Medium | R7_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS Medium)
+f7(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483
+
+R8 | Orijinal etiket: High | R8_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS High)
+f8(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483
+
+R9 | Orijinal etiket: Low | R9_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Low)
+f9(x) = 14.782657*RawFPcounts + 11.573163*Input + 3.547390*File + 27.663071
+
+R10 | Orijinal etiket: Medium | R10_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Medium)
+f10(x) = 11.615396*RawFPcounts + 7.441970*Input + -1.500664*File + 22.018440
+
+R11 | Orijinal etiket: Medium | R11_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS High)
+f11(x) = 8.479281*RawFPcounts + 8.860325*Input + 2.572527*File + 9.559771
+
+R12 | Orijinal etiket: Medium | R12_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Low)
+f12(x) = 32.122047*RawFPcounts + 7.878774*Input + 10.561505*File + 28.097670
+
+R13 | Orijinal etiket: Medium | R13_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Medium)
+f13(x) = 3.443269*RawFPcounts + 5.533095*Input + -22.508748*File + 7.855630
+
+R14 | Orijinal etiket: High | R14_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS High)
+f14(x) = -4.128207*RawFPcounts + -2.337512*Input + 12.471580*File + -8.652273
+
+R15 | Orijinal etiket: High | R15_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS Medium)
+f15(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483
+
+R16 | Orijinal etiket: High | R16_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS High)
+f16(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483
+
+R17 | Orijinal etiket: Medium | R17_OUT
+IF (RawFPcounts IS High) AND (Input IS Low) AND (File IS Medium)
+f17(x) = 6.794415*RawFPcounts + 6.633377*Input + -0.043709*File + 11.269636
+
+R18 | Orijinal etiket: High | R18_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS Medium)
+f18(x) = 2.121897*RawFPcounts + 3.594358*Input + -4.154093*File + 2.039420
+
+R19 | Orijinal etiket: High | R19_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS High)
+f19(x) = 20.749187*RawFPcounts + 15.455423*Input + 6.562663*File + 25.339818
+
+R20 | Orijinal etiket: Very_High | R20_OUT
+IF (RawFPcounts IS High) AND (Input IS High) AND (File IS High)
+f20(x) = 2.749950*RawFPcounts + -2.541860*Input + -2.306087*File + 13.008628
+

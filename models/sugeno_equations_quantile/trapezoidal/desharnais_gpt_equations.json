@@ -1,0 +1,298 @@
+{
+  "dataset": "desharnais",
+  "llm": "gpt",
+  "rule_source_llm": "chatgpt",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "number_of_rules": 20,
+  "number_of_inputs": 3,
+  "total_learned_parameters": 80,
+  "regularization": 1e-06,
+  "fuzzification": "quantile",
+  "membership_function_type": "trapezoidal",
+  "rules": [
+    {
+      "rule_id": "R1",
+      "original_label": "Very_Low",
+      "sugeno_output": "R1_OUT",
+      "antecedent": "IF (PointsAjust IS Low) AND (TeamExp IS High) AND (Length IS Low)",
+      "converted_rule": "IF (PointsAjust IS Low) AND (TeamExp IS High) AND (Length IS Low) THEN (Effort IS R1_OUT)",
+      "equation": "f1(x) = 57105.914003*PointsAjust + 8436.619457*TeamExp + -1934.134683*Length + -9517.167068",
+      "coefficients": {
+        "PointsAjust": 57105.91400346922,
+        "TeamExp": 8436.619456665236,
+        "Length": -1934.1346826992474,
+        "bias": -9517.167067842167
+      }
+    },
+    {
+      "rule_id": "R2",
+      "original_label": "Low",
+      "sugeno_output": "R2_OUT",
+      "antecedent": "IF (PointsAjust IS Low) AND (TeamExp IS High) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS Low) AND (TeamExp IS High) AND (Length IS Medium) THEN (Effort IS R2_OUT)",
+      "equation": "f2(x) = 19970.076359*PointsAjust + 21355.150895*TeamExp + -3231.585735*Length + -18715.005963",
+      "coefficients": {
+        "PointsAjust": 19970.076358530874,
+        "TeamExp": 21355.150894885763,
+        "Length": -3231.5857345367,
+        "bias": -18715.005963388652
+      }
+    },
+    {
+      "rule_id": "R3",
+      "original_label": "Medium",
+      "sugeno_output": "R3_OUT",
+      "antecedent": "IF (PointsAjust IS Low) AND (TeamExp IS High) AND (Length IS High)",
+      "converted_rule": "IF (PointsAjust IS Low) AND (TeamExp IS High) AND (Length IS High) THEN (Effort IS R3_OUT)",
+      "equation": "f3(x) = 26709.982788*PointsAjust + 11832.203384*TeamExp + -133.530616*Length + -12322.496537",
+      "coefficients": {
+        "PointsAjust": 26709.982787922963,
+        "TeamExp": 11832.203384077502,
+        "Length": -133.5306158459353,
+        "bias": -12322.496536575527
+      }
+    },
+    {
+      "rule_id": "R4",
+      "original_label": "Low",
+      "sugeno_output": "R4_OUT",
+      "antecedent": "IF (PointsAjust IS Low) AND (TeamExp IS Medium) AND (Length IS Low)",
+      "converted_rule": "IF (PointsAjust IS Low) AND (TeamExp IS Medium) AND (Length IS Low) THEN (Effort IS R4_OUT)",
+      "equation": "f4(x) = 22512.833231*PointsAjust + 11091.342292*TeamExp + 8801.078757*Length + -5892.164644",
+      "coefficients": {
+        "PointsAjust": 22512.833231347195,
+        "TeamExp": 11091.342291546229,
+        "Length": 8801.078756614525,
+        "bias": -5892.164643870512
+      }
+    },
+    {
+      "rule_id": "R5",
+      "original_label": "Medium",
+      "sugeno_output": "R5_OUT",
+      "antecedent": "IF (PointsAjust IS Low) AND (TeamExp IS Medium) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS Low) AND (TeamExp IS Medium) AND (Length IS Medium) THEN (Effort IS R5_OUT)",
+      "equation": "f5(x) = 21962.133171*PointsAjust + 11341.499485*TeamExp + -5048.267823*Length + -5475.235986",
+      "coefficients": {
+        "PointsAjust": 21962.133170633624,
+        "TeamExp": 11341.499485089827,
+        "Length": -5048.267822661432,
+        "bias": -5475.235985980343
+      }
+    },
+    {
+      "rule_id": "R6",
+      "original_label": "Medium",
+      "sugeno_output": "R6_OUT",
+      "antecedent": "IF (PointsAjust IS Low) AND (TeamExp IS Medium) AND (Length IS High)",
+      "converted_rule": "IF (PointsAjust IS Low) AND (TeamExp IS Medium) AND (Length IS High) THEN (Effort IS R6_OUT)",
+      "equation": "f6(x) = 25788.001372*PointsAjust + 334.552807*TeamExp + -4314.494464*Length + -23820.147115",
+      "coefficients": {
+        "PointsAjust": 25788.0013722023,
+        "TeamExp": 334.55280659440007,
+        "Length": -4314.494463813585,
+        "bias": -23820.147115285316
+      }
+    },
+    {
+      "rule_id": "R7",
+      "original_label": "Medium",
+      "sugeno_output": "R7_OUT",
+      "antecedent": "IF (PointsAjust IS Low) AND (TeamExp IS Low) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS Low) AND (TeamExp IS Low) AND (Length IS Medium) THEN (Effort IS R7_OUT)",
+      "equation": "f7(x) = -28351.566990*PointsAjust + 14744.219659*TeamExp + -56328.261535*Length + 12204.020017",
+      "coefficients": {
+        "PointsAjust": -28351.566989709336,
+        "TeamExp": 14744.219659061499,
+        "Length": -56328.26153515246,
+        "bias": 12204.020017006249
+      }
+    },
+    {
+      "rule_id": "R8",
+      "original_label": "High",
+      "sugeno_output": "R8_OUT",
+      "antecedent": "IF (PointsAjust IS Low) AND (TeamExp IS Low) AND (Length IS High)",
+      "converted_rule": "IF (PointsAjust IS Low) AND (TeamExp IS Low) AND (Length IS High) THEN (Effort IS R8_OUT)",
+      "equation": "f8(x) = -47537.201082*PointsAjust + 12049.614902*TeamExp + 1223.702151*Length + 5467.508132",
+      "coefficients": {
+        "PointsAjust": -47537.20108221082,
+        "TeamExp": 12049.614901682964,
+        "Length": 1223.7021510095362,
+        "bias": 5467.508131598098
+      }
+    },
+    {
+      "rule_id": "R9",
+      "original_label": "Low",
+      "sugeno_output": "R9_OUT",
+      "antecedent": "IF (PointsAjust IS Medium) AND (TeamExp IS High) AND (Length IS Low)",
+      "converted_rule": "IF (PointsAjust IS Medium) AND (TeamExp IS High) AND (Length IS Low) THEN (Effort IS R9_OUT)",
+      "equation": "f9(x) = 31133.590078*PointsAjust + -2487.190546*TeamExp + -6226.856214*Length + -3558.630198",
+      "coefficients": {
+        "PointsAjust": 31133.590078494675,
+        "TeamExp": -2487.19054574745,
+        "Length": -6226.856213718265,
+        "bias": -3558.6301984459046
+      }
+    },
+    {
+      "rule_id": "R10",
+      "original_label": "Medium",
+      "sugeno_output": "R10_OUT",
+      "antecedent": "IF (PointsAjust IS Medium) AND (TeamExp IS High) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS Medium) AND (TeamExp IS High) AND (Length IS Medium) THEN (Effort IS R10_OUT)",
+      "equation": "f10(x) = 28541.926297*PointsAjust + -114.431951*TeamExp + 7848.225625*Length + -3170.118863",
+      "coefficients": {
+        "PointsAjust": 28541.92629704497,
+        "TeamExp": -114.43195108285713,
+        "Length": 7848.2256250962155,
+        "bias": -3170.118862644634
+      }
+    },
+    {
+      "rule_id": "R11",
+      "original_label": "Medium",
+      "sugeno_output": "R11_OUT",
+      "antecedent": "IF (PointsAjust IS Medium) AND (TeamExp IS High) AND (Length IS High)",
+      "converted_rule": "IF (PointsAjust IS Medium) AND (TeamExp IS High) AND (Length IS High) THEN (Effort IS R11_OUT)",
+      "equation": "f11(x) = -25603.847490*PointsAjust + -24812.249951*TeamExp + 36213.376090*Length + 23694.890084",
+      "coefficients": {
+        "PointsAjust": -25603.847490187974,
+        "TeamExp": -24812.249950729645,
+        "Length": 36213.376089802056,
+        "bias": 23694.89008364371
+      }
+    },
+    {
+      "rule_id": "R12",
+      "original_label": "Medium",
+      "sugeno_output": "R12_OUT",
+      "antecedent": "IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS Low)",
+      "converted_rule": "IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS Low) THEN (Effort IS R12_OUT)",
+      "equation": "f12(x) = 39042.106449*PointsAjust + 5342.830350*TeamExp + 3052.638650*Length + -15473.017862",
+      "coefficients": {
+        "PointsAjust": 39042.10644938678,
+        "TeamExp": 5342.830350135693,
+        "Length": 3052.638649944814,
+        "bias": -15473.017862011297
+      }
+    },
+    {
+      "rule_id": "R13",
+      "original_label": "Medium",
+      "sugeno_output": "R13_OUT",
+      "antecedent": "IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS Medium) THEN (Effort IS R13_OUT)",
+      "equation": "f13(x) = 45986.968953*PointsAjust + 6359.700923*TeamExp + 2507.606626*Length + -13778.233587",
+      "coefficients": {
+        "PointsAjust": 45986.96895347475,
+        "TeamExp": 6359.700923202297,
+        "Length": 2507.6066259999243,
+        "bias": -13778.233587248998
+      }
+    },
+    {
+      "rule_id": "R14",
+      "original_label": "High",
+      "sugeno_output": "R14_OUT",
+      "antecedent": "IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS High)",
+      "converted_rule": "IF (PointsAjust IS Medium) AND (TeamExp IS Medium) AND (Length IS High) THEN (Effort IS R14_OUT)",
+      "equation": "f14(x) = 18216.539836*PointsAjust + 36146.799139*TeamExp + -112394.893341*Length + 35866.930144",
+      "coefficients": {
+        "PointsAjust": 18216.539835960506,
+        "TeamExp": 36146.79913871283,
+        "Length": -112394.89334112621,
+        "bias": 35866.930143603284
+      }
+    },
+    {
+      "rule_id": "R15",
+      "original_label": "High",
+      "sugeno_output": "R15_OUT",
+      "antecedent": "IF (PointsAjust IS Medium) AND (TeamExp IS Low) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS Medium) AND (TeamExp IS Low) AND (Length IS Medium) THEN (Effort IS R15_OUT)",
+      "equation": "f15(x) = 33936.210806*PointsAjust + 2160.054027*TeamExp + 63530.803654*Length + -19256.394060",
+      "coefficients": {
+        "PointsAjust": 33936.210806018986,
+        "TeamExp": 2160.0540270811234,
+        "Length": 63530.80365368363,
+        "bias": -19256.394060263672
+      }
+    },
+    {
+      "rule_id": "R16",
+      "original_label": "High",
+      "sugeno_output": "R16_OUT",
+      "antecedent": "IF (PointsAjust IS Medium) AND (TeamExp IS Low) AND (Length IS High)",
+      "converted_rule": "IF (PointsAjust IS Medium) AND (TeamExp IS Low) AND (Length IS High) THEN (Effort IS R16_OUT)",
+      "equation": "f16(x) = -127468.213536*PointsAjust + -11105.431799*TeamExp + 8737.382294*Length + 36773.037506",
+      "coefficients": {
+        "PointsAjust": -127468.21353576319,
+        "TeamExp": -11105.431798890895,
+        "Length": 8737.382294441766,
+        "bias": 36773.037505750384
+      }
+    },
+    {
+      "rule_id": "R17",
+      "original_label": "Medium",
+      "sugeno_output": "R17_OUT",
+      "antecedent": "IF (PointsAjust IS High) AND (TeamExp IS High) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS High) AND (TeamExp IS High) AND (Length IS Medium) THEN (Effort IS R17_OUT)",
+      "equation": "f17(x) = 848.168787*PointsAjust + 17418.171339*TeamExp + -40717.798108*Length + -2914.735539",
+      "coefficients": {
+        "PointsAjust": 848.1687865601136,
+        "TeamExp": 17418.17133935814,
+        "Length": -40717.79810759616,
+        "bias": -2914.7355394763686
+      }
+    },
+    {
+      "rule_id": "R18",
+      "original_label": "High",
+      "sugeno_output": "R18_OUT",
+      "antecedent": "IF (PointsAjust IS High) AND (TeamExp IS Medium) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS High) AND (TeamExp IS Medium) AND (Length IS Medium) THEN (Effort IS R18_OUT)",
+      "equation": "f18(x) = -49475.775391*PointsAjust + 25980.513654*TeamExp + -34957.258627*Length + 18923.120976",
+      "coefficients": {
+        "PointsAjust": -49475.775391441275,
+        "TeamExp": 25980.51365409858,
+        "Length": -34957.258627003655,
+        "bias": 18923.120975836675
+      }
+    },
+    {
+      "rule_id": "R19",
+      "original_label": "High",
+      "sugeno_output": "R19_OUT",
+      "antecedent": "IF (PointsAjust IS High) AND (TeamExp IS Low) AND (Length IS Medium)",
+      "converted_rule": "IF (PointsAjust IS High) AND (TeamExp IS Low) AND (Length IS Medium) THEN (Effort IS R19_OUT)",
+      "equation": "f19(x) = 11861.020255*PointsAjust + -7968.879108*TeamExp + -1777.140485*Length + 741.401804",
+      "coefficients": {
+        "PointsAjust": 11861.02025523237,
+        "TeamExp": -7968.87910774918,
+        "Length": -1777.1404854025375,
+        "bias": 741.4018044690189
+      }
+    },
+    {
+      "rule_id": "R20",
+      "original_label": "Very_High",
+      "sugeno_output": "R20_OUT",
+      "antecedent": "IF (PointsAjust IS High) AND (TeamExp IS Low) AND (Length IS High)",
+      "converted_rule": "IF (PointsAjust IS High) AND (TeamExp IS Low) AND (Length IS High) THEN (Effort IS R20_OUT)",
+      "equation": "f20(x) = 31052.425089*PointsAjust + 3993.758796*TeamExp + 7328.433697*Length + -5524.117149",
+      "coefficients": {
+        "PointsAjust": 31052.42508854792,
+        "TeamExp": 3993.7587958525887,
+        "Length": 7328.433697172624,
+        "bias": -5524.117149416952
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+Dataset: albrecht
+LLM: gemini
+Model: Sugeno V1 Label-Level First-Order
+Kural sayisi: 20
+Cikti etiketi sayisi: 5
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 20
+
+Fuzzification: quantile (triangular)
+
+V1: Her cikti etiketi icin bir denklem ogrenir; daha az parametre ve daha kararlı davranis.
+V2: Her kural icin bir denklem ogrenir; daha esnek fakat asiri ogrenme riski daha yuksek.
+
+Very_Low
+Very_Low(x) = -1.589670*RawFPcounts + 0.352608*Input + -4.295560*File + 0.350096
+
+Low
+Low(x) = 1.682200*RawFPcounts + -1.853288*Input + -3.920388*File + 6.670462
+
+Medium
+Medium(x) = 30.251166*RawFPcounts + -54.455468*Input + -34.075919*File + 23.518775
+
+High
+High(x) = 1.853186*RawFPcounts + -5.019802*Input + -21.433230*File + 20.146965
+
+Very_High
+Very_High(x) = 19.372908*RawFPcounts + -2.188923*Input + -10.981247*File + 4.935525
+

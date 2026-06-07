@@ -1,0 +1,92 @@
+Dataset: albrecht
+LLM: gemini
+Kural sayisi: 20
+Girdi sayisi: 3
+Toplam ogrenilen parametre: 80
+
+Fuzzification: quantile (triangular)
+
+Not: Her kural kendi R_i_OUT cikti terimine ve kendi birinci derece denklemine sahiptir.
+Albrecht veri setinde satir sayisi az oldugu icin 80 parametre asiri ogrenmeye yatkindir.
+Desharnais daha fazla ornek icerdigi icin bu tasarim acisindan daha guvenlidir.
+
+R1 | Orijinal etiket: Very_Low | R1_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Low)
+f1(x) = -0.654189*RawFPcounts + -0.385529*Input + -1.659331*File + 0.548955
+
+R2 | Orijinal etiket: Low | R2_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Low)
+f2(x) = -74.036141*RawFPcounts + 19.960223*Input + -2.112304*File + 1.276509
+
+R3 | Orijinal etiket: Low | R3_OUT
+IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Medium)
+f3(x) = -0.314138*RawFPcounts + -0.556720*Input + -0.591042*File + 6.037876
+
+R4 | Orijinal etiket: Low | R4_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Low)
+f4(x) = 7.798046*RawFPcounts + 3.977819*Input + 0.775892*File + 11.152766
+
+R5 | Orijinal etiket: Medium | R5_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS Low)
+f5(x) = -1.253474*RawFPcounts + 23.712276*Input + 0.704706*File + 46.348670
+
+R6 | Orijinal etiket: Medium | R6_OUT
+IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Medium)
+f6(x) = -0.963326*RawFPcounts + -0.556720*Input + -2.630503*File + -7.014675
+
+R7 | Orijinal etiket: Medium | R7_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Low)
+f7(x) = 36.930318*RawFPcounts + 8.530506*Input + 12.333359*File + 34.074789
+
+R8 | Orijinal etiket: Medium | R8_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Medium)
+f8(x) = 13.843207*RawFPcounts + 1.593149*Input + -0.987355*File + 24.992335
+
+R9 | Orijinal etiket: High | R9_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS Medium)
+f9(x) = -0.963326*RawFPcounts + -0.556720*Input + -2.630503*File + -7.014675
+
+R10 | Orijinal etiket: High | R10_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS Low)
+f10(x) = 9.821427*RawFPcounts + 8.430467*Input + -1.696420*File + 7.930651
+
+R11 | Orijinal etiket: Medium | R11_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Medium)
+f11(x) = 4.652965*RawFPcounts + 5.080023*Input + -33.111103*File + 9.895556
+
+R12 | Orijinal etiket: Medium | R12_OUT
+IF (RawFPcounts IS High) AND (Input IS Low) AND (File IS Low)
+f12(x) = -0.737282*RawFPcounts + -0.408010*Input + -2.543249*File + -6.549319
+
+R13 | Orijinal etiket: High | R13_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS Low)
+f13(x) = 0.700277*RawFPcounts + 0.583284*Input + -1.989251*File + -3.594662
+
+R14 | Orijinal etiket: High | R14_OUT
+IF (RawFPcounts IS High) AND (Input IS Low) AND (File IS Medium)
+f14(x) = -1.278897*RawFPcounts + -0.796942*Input + -2.946627*File + -7.627671
+
+R15 | Orijinal etiket: High | R15_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS Medium)
+f15(x) = -0.963326*RawFPcounts + -0.556720*Input + -2.630503*File + -7.014675
+
+R16 | Orijinal etiket: High | R16_OUT
+IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS High)
+f16(x) = -0.963326*RawFPcounts + -0.556720*Input + -2.630503*File + -7.014675
+
+R17 | Orijinal etiket: High | R17_OUT
+IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS High)
+f17(x) = -13.794090*RawFPcounts + -19.977006*Input + 11.820876*File + 8.741784
+
+R18 | Orijinal etiket: Very_High | R18_OUT
+IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS Medium)
+f18(x) = -3.857961*RawFPcounts + -2.457760*Input + -5.253287*File + -12.717793
+
+R19 | Orijinal etiket: Very_High | R19_OUT
+IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS High)
+f19(x) = -0.963326*RawFPcounts + -0.556720*Input + -2.630503*File + -7.014675
+
+R20 | Orijinal etiket: Very_High | R20_OUT
+IF (RawFPcounts IS High) AND (Input IS High) AND (File IS High)
+f20(x) = 0.575868*RawFPcounts + -74.896144*Input + -5.659642*File + 59.881546
+

@@ -24,11 +24,31 @@ from src.fuzzy_design_quantile import (
 
 DATASETS = ["albrecht", "desharnais"]
 LLMS = ["gemini", "gpt", "claude"]
-RESULTS_DIR = "reports/results/quantile"
-PREDICTIONS_DIR = "reports/predictions/quantile"
-RULE_ANALYSIS_DIR = "reports/rule_analysis/quantile"
-FIGURES_DIR = "reports/figures/quantile"
-EQUATIONS_DIR = "models/sugeno_equations_quantile"
+RESULTS_ROOT = "reports/results/quantile"
+PREDICTIONS_ROOT = "reports/predictions/quantile"
+RULE_ANALYSIS_ROOT = "reports/rule_analysis/quantile"
+FIGURES_ROOT = "reports/figures/quantile"
+EQUATIONS_ROOT = "models/sugeno_equations_quantile"
+RESULTS_DIR = os.path.join(RESULTS_ROOT, "triangular")
+PREDICTIONS_DIR = os.path.join(PREDICTIONS_ROOT, "triangular")
+RULE_ANALYSIS_DIR = os.path.join(RULE_ANALYSIS_ROOT, "triangular")
+FIGURES_DIR = os.path.join(FIGURES_ROOT, "triangular")
+EQUATIONS_DIR = os.path.join(EQUATIONS_ROOT, "triangular")
+
+
+def set_output_dirs(mf_type):
+    global RESULTS_DIR, PREDICTIONS_DIR, RULE_ANALYSIS_DIR, FIGURES_DIR, EQUATIONS_DIR
+    RESULTS_DIR = os.path.join(RESULTS_ROOT, mf_type)
+    PREDICTIONS_DIR = os.path.join(PREDICTIONS_ROOT, mf_type)
+    RULE_ANALYSIS_DIR = os.path.join(RULE_ANALYSIS_ROOT, mf_type)
+    FIGURES_DIR = os.path.join(FIGURES_ROOT, mf_type)
+    EQUATIONS_DIR = os.path.join(EQUATIONS_ROOT, mf_type)
+
+
+def resolve_mf_types(mf_type):
+    if mf_type == "all":
+        return list(MF_TYPES)
+    return [mf_type]
 
 
 def split_dataset(df):
@@ -257,19 +277,29 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Run quantile-based Sugeno V2 full rule-level models.")
     parser.add_argument("--datasets", nargs="+", default=DATASETS, choices=DATASETS)
     parser.add_argument("--llms", nargs="+", default=LLMS, choices=LLMS)
-    parser.add_argument("--mf-type", default="triangular", choices=MF_TYPES)
+    parser.add_argument("--mf-type", default="all", choices=[*MF_TYPES, "all"])
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     all_rows = []
-    for dataset_name in args.datasets:
-        for llm_name in args.llms:
-            all_rows.append(run_single(dataset_name, llm_name, args.mf_type))
+    for mf_type in resolve_mf_types(args.mf_type):
+        set_output_dirs(mf_type)
+        mf_rows = []
+        for dataset_name in args.datasets:
+            for llm_name in args.llms:
+                row = run_single(dataset_name, llm_name, mf_type)
+                mf_rows.append(row)
+                all_rows.append(row)
 
-    os.makedirs(RESULTS_DIR, exist_ok=True)
-    summary_path = os.path.join(RESULTS_DIR, "full_sugeno_quantile_summary.csv")
+        os.makedirs(RESULTS_DIR, exist_ok=True)
+        mf_summary_path = os.path.join(RESULTS_DIR, "full_sugeno_quantile_summary.csv")
+        pd.DataFrame(mf_rows).to_csv(mf_summary_path, index=False)
+        print(f"[OK] {mf_type} V2 summary saved to {mf_summary_path}")
+
+    os.makedirs(RESULTS_ROOT, exist_ok=True)
+    summary_path = os.path.join(RESULTS_ROOT, "full_sugeno_quantile_summary.csv")
     pd.DataFrame(all_rows).to_csv(summary_path, index=False)
     print(f"\n[OK] Quantile Sugeno V2 run completed. Summary saved to {summary_path}")
 

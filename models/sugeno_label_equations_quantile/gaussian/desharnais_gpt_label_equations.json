@@ -1,0 +1,64 @@
+{
+  "dataset": "desharnais",
+  "llm": "gpt",
+  "rule_source_llm": "chatgpt",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "fuzzification": "quantile",
+  "membership_function_type": "gaussian",
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 5008.540711*PointsAjust + 1035.905095*TeamExp + -1736.977010*Length + 577.187538",
+      "coefficients": {
+        "PointsAjust": 5008.540711155986,
+        "TeamExp": 1035.9050951312895,
+        "Length": -1736.977009684182,
+        "bias": 577.187538259396
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 15749.590670*PointsAjust + 7401.352347*TeamExp + -793.892735*Length + 3552.560253",
+      "coefficients": {
+        "PointsAjust": 15749.590669678495,
+        "TeamExp": 7401.352347129134,
+        "Length": -793.8927348165016,
+        "bias": 3552.560252875884
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = -627.595693*PointsAjust + -2856.937142*TeamExp + 19426.507664*Length + -2733.315378",
+      "coefficients": {
+        "PointsAjust": -627.5956930984333,
+        "TeamExp": -2856.937141945876,
+        "Length": 19426.507664249515,
+        "bias": -2733.3153778822957
+      }
+    },
+    "High": {
+      "equation": "High(x) = 11415.939508*PointsAjust + 1846.486406*TeamExp + 2402.456238*Length + -1286.457302",
+      "coefficients": {
+        "PointsAjust": 11415.939507831992,
+        "TeamExp": 1846.4864055951716,
+        "Length": 2402.4562384568926,
+        "bias": -1286.457301534815
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = -8915.051619*PointsAjust + 11252.669315*TeamExp + -2721.917092*Length + 7719.249370",
+      "coefficients": {
+        "PointsAjust": -8915.051619015394,
+        "TeamExp": 11252.669314800118,
+        "Length": -2721.9170915723435,
+        "bias": 7719.249370335129
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "dataset": "desharnais",
+  "llm": "gemini",
+  "rule_source_llm": "gemini",
+  "model_type": "label_level_first_order_sugeno",
+  "input_vars": [
+    "PointsAjust",
+    "TeamExp",
+    "Length"
+  ],
+  "rules": 20,
+  "output_label_count": 5,
+  "parameter_count": 20,
+  "regularization": 0.01,
+  "fuzzification": "quantile",
+  "membership_function_type": "trapezoidal",
+  "output_labels": {
+    "Very_Low": {
+      "equation": "Very_Low(x) = 10842.887269*PointsAjust + -3863.070155*TeamExp + 1515.972401*Length + 4360.948899",
+      "coefficients": {
+        "PointsAjust": 10842.887269143177,
+        "TeamExp": -3863.0701546626774,
+        "Length": 1515.9724006891654,
+        "bias": 4360.94889887278
+      }
+    },
+    "Low": {
+      "equation": "Low(x) = 9803.456410*PointsAjust + 2686.556188*TeamExp + 5533.514898*Length + -1748.493538",
+      "coefficients": {
+        "PointsAjust": 9803.456409941673,
+        "TeamExp": 2686.556188304223,
+        "Length": 5533.514897579732,
+        "bias": -1748.4935380497122
+      }
+    },
+    "Medium": {
+      "equation": "Medium(x) = 7592.068311*PointsAjust + 3604.702895*TeamExp + 6752.117348*Length + -1276.157389",
+      "coefficients": {
+        "PointsAjust": 7592.06831117526,
+        "TeamExp": 3604.7028954582447,
+        "Length": 6752.117347741999,
+        "bias": -1276.1573888088758
+      }
+    },
+    "High": {
+      "equation": "High(x) = 2397.961904*PointsAjust + 1596.327924*TeamExp + -2325.512578*Length + 2669.408502",
+      "coefficients": {
+        "PointsAjust": 2397.9619038584383,
+        "TeamExp": 1596.3279242205303,
+        "Length": -2325.5125782724053,
+        "bias": 2669.4085018026176
+      }
+    },
+    "Very_High": {
+      "equation": "Very_High(x) = -10753.704356*PointsAjust + -649.210129*TeamExp + -6858.724170*Length + 11050.587846",
+      "coefficients": {
+        "PointsAjust": -10753.704355599184,
+        "TeamExp": -649.2101287782579,
+        "Length": -6858.724169702979,
+        "bias": 11050.587845933505
+      }
+    }
+  }
+}

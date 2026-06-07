@@ -1,0 +1,298 @@
+{
+  "dataset": "albrecht",
+  "llm": "gpt",
+  "rule_source_llm": "chatgpt",
+  "input_vars": [
+    "RawFPcounts",
+    "Input",
+    "File"
+  ],
+  "number_of_rules": 20,
+  "number_of_inputs": 3,
+  "total_learned_parameters": 80,
+  "regularization": 1e-06,
+  "fuzzification": "quantile",
+  "membership_function_type": "trapezoidal",
+  "rules": [
+    {
+      "rule_id": "R1",
+      "original_label": "Very_Low",
+      "sugeno_output": "R1_OUT",
+      "antecedent": "IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Low)",
+      "converted_rule": "IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Low) THEN (Effort IS R1_OUT)",
+      "equation": "f1(x) = 7.551430*RawFPcounts + 6.053664*Input + 0.245256*File + -0.268709",
+      "coefficients": {
+        "RawFPcounts": 7.551430252226657,
+        "Input": 6.053663682523093,
+        "File": 0.24525586265798968,
+        "bias": -0.2687094901438662
+      }
+    },
+    {
+      "rule_id": "R2",
+      "original_label": "Low",
+      "sugeno_output": "R2_OUT",
+      "antecedent": "IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Medium)",
+      "converted_rule": "IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS Medium) THEN (Effort IS R2_OUT)",
+      "equation": "f2(x) = 7.368571*RawFPcounts + 7.286379*Input + -0.329206*File + 5.762372",
+      "coefficients": {
+        "RawFPcounts": 7.3685713614489226,
+        "Input": 7.286379473990038,
+        "File": -0.32920596651202133,
+        "bias": 5.762371653560013
+      }
+    },
+    {
+      "rule_id": "R3",
+      "original_label": "Medium",
+      "sugeno_output": "R3_OUT",
+      "antecedent": "IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS High)",
+      "converted_rule": "IF (RawFPcounts IS Low) AND (Input IS Low) AND (File IS High) THEN (Effort IS R3_OUT)",
+      "equation": "f3(x) = 4.080559*RawFPcounts + 6.579488*Input + -5.659939*File + 7.139901",
+      "coefficients": {
+        "RawFPcounts": 4.080558810600375,
+        "Input": 6.579487953762714,
+        "File": -5.65993850563442,
+        "bias": 7.139900885008215
+      }
+    },
+    {
+      "rule_id": "R4",
+      "original_label": "Low",
+      "sugeno_output": "R4_OUT",
+      "antecedent": "IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Low)",
+      "converted_rule": "IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Low) THEN (Effort IS R4_OUT)",
+      "equation": "f4(x) = -87.977438*RawFPcounts + 26.161962*Input + 0.396332*File + 6.341306",
+      "coefficients": {
+        "RawFPcounts": -87.97743820863315,
+        "Input": 26.161962499511908,
+        "File": 0.3963316001123998,
+        "bias": 6.341305602320916
+      }
+    },
+    {
+      "rule_id": "R5",
+      "original_label": "Medium",
+      "sugeno_output": "R5_OUT",
+      "antecedent": "IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Medium)",
+      "converted_rule": "IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS Medium) THEN (Effort IS R5_OUT)",
+      "equation": "f5(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483",
+      "coefficients": {
+        "RawFPcounts": 7.7342891517720505,
+        "Input": 7.286379474144807,
+        "File": 0.8197176909482936,
+        "bias": 13.115483055159268
+      }
+    },
+    {
+      "rule_id": "R6",
+      "original_label": "Medium",
+      "sugeno_output": "R6_OUT",
+      "antecedent": "IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS High)",
+      "converted_rule": "IF (RawFPcounts IS Low) AND (Input IS Medium) AND (File IS High) THEN (Effort IS R6_OUT)",
+      "equation": "f6(x) = 7.903928*RawFPcounts + 7.389992*Input + 1.035038*File + 13.478129",
+      "coefficients": {
+        "RawFPcounts": 7.903927668313343,
+        "Input": 7.38999246038354,
+        "File": 1.0350384290515973,
+        "bias": 13.478128505813082
+      }
+    },
+    {
+      "rule_id": "R7",
+      "original_label": "Medium",
+      "sugeno_output": "R7_OUT",
+      "antecedent": "IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS Medium)",
+      "converted_rule": "IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS Medium) THEN (Effort IS R7_OUT)",
+      "equation": "f7(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483",
+      "coefficients": {
+        "RawFPcounts": 7.734289151785256,
+        "Input": 7.286379474156242,
+        "File": 0.8197176909463462,
+        "bias": 13.11548305514368
+      }
+    },
+    {
+      "rule_id": "R8",
+      "original_label": "High",
+      "sugeno_output": "R8_OUT",
+      "antecedent": "IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS High)",
+      "converted_rule": "IF (RawFPcounts IS Low) AND (Input IS High) AND (File IS High) THEN (Effort IS R8_OUT)",
+      "equation": "f8(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483",
+      "coefficients": {
+        "RawFPcounts": 7.734289151781422,
+        "Input": 7.286379474155373,
+        "File": 0.8197176909460484,
+        "bias": 13.115483055138865
+      }
+    },
+    {
+      "rule_id": "R9",
+      "original_label": "Low",
+      "sugeno_output": "R9_OUT",
+      "antecedent": "IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Low)",
+      "converted_rule": "IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Low) THEN (Effort IS R9_OUT)",
+      "equation": "f9(x) = 14.782657*RawFPcounts + 11.573163*Input + 3.547390*File + 27.663071",
+      "coefficients": {
+        "RawFPcounts": 14.782657090614913,
+        "Input": 11.573162958062031,
+        "File": 3.547390346532763,
+        "bias": 27.66307055069149
+      }
+    },
+    {
+      "rule_id": "R10",
+      "original_label": "Medium",
+      "sugeno_output": "R10_OUT",
+      "antecedent": "IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Medium)",
+      "converted_rule": "IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS Medium) THEN (Effort IS R10_OUT)",
+      "equation": "f10(x) = 11.615396*RawFPcounts + 7.441970*Input + -1.500664*File + 22.018440",
+      "coefficients": {
+        "RawFPcounts": 11.615396348351887,
+        "Input": 7.441969936341355,
+        "File": -1.5006642486772697,
+        "bias": 22.018439676466404
+      }
+    },
+    {
+      "rule_id": "R11",
+      "original_label": "Medium",
+      "sugeno_output": "R11_OUT",
+      "antecedent": "IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS High)",
+      "converted_rule": "IF (RawFPcounts IS Medium) AND (Input IS Low) AND (File IS High) THEN (Effort IS R11_OUT)",
+      "equation": "f11(x) = 8.479281*RawFPcounts + 8.860325*Input + 2.572527*File + 9.559771",
+      "coefficients": {
+        "RawFPcounts": 8.479281233569564,
+        "Input": 8.860325044173319,
+        "File": 2.5725270132995792,
+        "bias": 9.559771041058955
+      }
+    },
+    {
+      "rule_id": "R12",
+      "original_label": "Medium",
+      "sugeno_output": "R12_OUT",
+      "antecedent": "IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Low)",
+      "converted_rule": "IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Low) THEN (Effort IS R12_OUT)",
+      "equation": "f12(x) = 32.122047*RawFPcounts + 7.878774*Input + 10.561505*File + 28.097670",
+      "coefficients": {
+        "RawFPcounts": 32.12204738841623,
+        "Input": 7.878773578916991,
+        "File": 10.561505387578368,
+        "bias": 28.09767029771064
+      }
+    },
+    {
+      "rule_id": "R13",
+      "original_label": "Medium",
+      "sugeno_output": "R13_OUT",
+      "antecedent": "IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Medium)",
+      "converted_rule": "IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS Medium) THEN (Effort IS R13_OUT)",
+      "equation": "f13(x) = 3.443269*RawFPcounts + 5.533095*Input + -22.508748*File + 7.855630",
+      "coefficients": {
+        "RawFPcounts": 3.443269425051512,
+        "Input": 5.533095095251341,
+        "File": -22.508748078312387,
+        "bias": 7.855629924833783
+      }
+    },
+    {
+      "rule_id": "R14",
+      "original_label": "High",
+      "sugeno_output": "R14_OUT",
+      "antecedent": "IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS High)",
+      "converted_rule": "IF (RawFPcounts IS Medium) AND (Input IS Medium) AND (File IS High) THEN (Effort IS R14_OUT)",
+      "equation": "f14(x) = -4.128207*RawFPcounts + -2.337512*Input + 12.471580*File + -8.652273",
+      "coefficients": {
+        "RawFPcounts": -4.128206710394768,
+        "Input": -2.3375118499927647,
+        "File": 12.471579882009781,
+        "bias": -8.652273486213806
+      }
+    },
+    {
+      "rule_id": "R15",
+      "original_label": "High",
+      "sugeno_output": "R15_OUT",
+      "antecedent": "IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS Medium)",
+      "converted_rule": "IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS Medium) THEN (Effort IS R15_OUT)",
+      "equation": "f15(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483",
+      "coefficients": {
+        "RawFPcounts": 7.734289151769838,
+        "Input": 7.286379474453825,
+        "File": 0.8197176909038505,
+        "bias": 13.115483054459872
+      }
+    },
+    {
+      "rule_id": "R16",
+      "original_label": "High",
+      "sugeno_output": "R16_OUT",
+      "antecedent": "IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS High)",
+      "converted_rule": "IF (RawFPcounts IS Medium) AND (Input IS High) AND (File IS High) THEN (Effort IS R16_OUT)",
+      "equation": "f16(x) = 7.734289*RawFPcounts + 7.286379*Input + 0.819718*File + 13.115483",
+      "coefficients": {
+        "RawFPcounts": 7.73428915174382,
+        "Input": 7.286379474453825,
+        "File": 0.8197176909038506,
+        "bias": 13.115483054459869
+      }
+    },
+    {
+      "rule_id": "R17",
+      "original_label": "Medium",
+      "sugeno_output": "R17_OUT",
+      "antecedent": "IF (RawFPcounts IS High) AND (Input IS Low) AND (File IS Medium)",
+      "converted_rule": "IF (RawFPcounts IS High) AND (Input IS Low) AND (File IS Medium) THEN (Effort IS R17_OUT)",
+      "equation": "f17(x) = 6.794415*RawFPcounts + 6.633377*Input + -0.043709*File + 11.269636",
+      "coefficients": {
+        "RawFPcounts": 6.794415103638701,
+        "Input": 6.633376727848607,
+        "File": -0.0437088011546318,
+        "bias": 11.269636250119609
+      }
+    },
+    {
+      "rule_id": "R18",
+      "original_label": "High",
+      "sugeno_output": "R18_OUT",
+      "antecedent": "IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS Medium)",
+      "converted_rule": "IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS Medium) THEN (Effort IS R18_OUT)",
+      "equation": "f18(x) = 2.121897*RawFPcounts + 3.594358*Input + -4.154093*File + 2.039420",
+      "coefficients": {
+        "RawFPcounts": 2.121896956420634,
+        "Input": 3.594358306762093,
+        "File": -4.15409342671932,
+        "bias": 2.039419548042991
+      }
+    },
+    {
+      "rule_id": "R19",
+      "original_label": "High",
+      "sugeno_output": "R19_OUT",
+      "antecedent": "IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS High)",
+      "converted_rule": "IF (RawFPcounts IS High) AND (Input IS Medium) AND (File IS High) THEN (Effort IS R19_OUT)",
+      "equation": "f19(x) = 20.749187*RawFPcounts + 15.455423*Input + 6.562663*File + 25.339818",
+      "coefficients": {
+        "RawFPcounts": 20.74918689237952,
+        "Input": 15.455422971669822,
+        "File": 6.56266294902678,
+        "bias": 25.339817920208517
+      }
+    },
+    {
+      "rule_id": "R20",
+      "original_label": "Very_High",
+      "sugeno_output": "R20_OUT",
+      "antecedent": "IF (RawFPcounts IS High) AND (Input IS High) AND (File IS High)",
+      "converted_rule": "IF (RawFPcounts IS High) AND (Input IS High) AND (File IS High) THEN (Effort IS R20_OUT)",
+      "equation": "f20(x) = 2.749950*RawFPcounts + -2.541860*Input + -2.306087*File + 13.008628",
+      "coefficients": {
+        "RawFPcounts": 2.7499495796910716,
+        "Input": -2.5418595973314915,
+        "File": -2.3060874697255147,
+        "bias": 13.008627831444354
+      }
+    }
+  ]
+}
