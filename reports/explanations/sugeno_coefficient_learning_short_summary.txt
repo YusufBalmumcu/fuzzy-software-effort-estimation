@@ -1,0 +1,56 @@
+Sugeno katsayıları projede elle belirlenmedi; eğitim verisi kullanılarak otomatik öğrenildi.
+
+Güncel ana modeller:
+- Sugeno V1 Label-Level
+- Sugeno V2 Full Rule-Level
+
+Sugeno V1:
+- 20 fuzzy kural vardır.
+- 5 çıktı etiketi vardır: Very_Low, Low, Medium, High, Very_High.
+- Her çıktı etiketi için bir doğrusal Sugeno denklemi öğrenilir.
+- 3 girdi + 1 bias = 4 parametre.
+- 5 * 4 = 20 toplam parametre.
+
+Sugeno V2:
+- 20 fuzzy kural vardır.
+- Her kural için ayrı bir doğrusal Sugeno denklemi öğrenilir.
+- 20 * (3 girdi + 1 bias) = 80 toplam parametre.
+
+Katsayı öğrenme mantığı:
+1. Normalize girdiler alınır.
+2. Low / Medium / High üyelik dereceleri hesaplanır.
+3. Her kuralın ateşleme gücü bulunur.
+4. Ateşleme güçleri normalize edilir.
+5. Bu normalize ağırlıklarla Phi adlı tasarım matrisi oluşturulur.
+6. Katsayı vektörü theta regularized least squares ile çözülür:
+
+theta = (Phi.T Phi + lambda I)^(-1) Phi.T y
+
+Kodda bu işlem:
+- src/label_level_sugeno_model.py -> fit()
+- src/full_sugeno_model.py -> fit()
+
+fonksiyonlarında np.linalg.solve() ile yapılır. Eğer çözüm başarısız olursa np.linalg.lstsq() fallback olarak kullanılır.
+
+Önemli not:
+Eski src/sugeno_model.py içindeki SugenoEffortModel farklıdır. O model scipy.optimize.minimize ve L-BFGS-B ile RMSE'yi iteratif olarak minimize eder. Ancak güncel V1 ve V2 rapor akışı LabelLevelSugenoModel ve FullRuleSugenoModel sınıflarını kullanır.
+
+Linear Regression farkı:
+- Linear Regression tek global denklem öğrenir:
+  y_hat = a1*x1 + a2*x2 + a3*x3 + b
+- Sugeno birden fazla yerel denklem öğrenir:
+  y_hat = sum(w_bar_i * f_i(x))
+
+V2 neden overfit eder?
+- V2 80 parametre öğrenir.
+- Albrecht gibi küçük veri setlerinde parametre sayısı eğitim satırına göre çok yüksektir.
+- Bu yüzden Train RMSE neredeyse sıfır olabilir.
+- Ancak Test RMSE yüksekse bu ezberleme, yani overfitting anlamına gelir.
+
+V1 neden daha stabil?
+- V1 yalnızca 20 parametre öğrenir.
+- Birden fazla kural aynı çıktı etiketi denklemine katkı verir.
+- Model karmaşıklığı daha düşük olduğu için genelleme riski daha kontrollüdür.
+
+Öğretmene kısa anlatım:
+Hocam, Sugeno modelinde THEN kısmındaki katsayıları elle yazmadık. Önce kuralların fuzzy ağırlıklarını hesapladık, sonra bu ağırlıklarla bir tasarım matrisi kurduk. Güncel V1 ve V2 modellerinde katsayılar regularized least squares yöntemiyle otomatik öğrenildi. V1 her çıktı etiketi için denklem öğrendiği için 20 parametreye, V2 her kural için denklem öğrendiği için 80 parametreye sahiptir. Bu yüzden V2 daha esnektir ama küçük veri setlerinde overfitting riski daha yüksektir.
